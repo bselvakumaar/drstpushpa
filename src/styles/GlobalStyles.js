@@ -12,20 +12,23 @@ const GlobalStyles = createGlobalStyle`
   body {
     font-family: 'Inter', sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: ${props => props.theme.colors.text};
+    background-color: ${props => props.theme.colors.background};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     -webkit-text-size-adjust: 100%;
     -ms-text-size-adjust: 100%;
+    transition: background-color 0.3s ease, color 0.3s ease;
   }
 
   .hero-section {
-    background: linear-gradient(135deg, #00897b 0%, #00796b 100%);
+    background: ${props => props.theme.colors.headerGradient};
     color: white;
     padding: 6rem 0 4rem;
     text-align: center;
     position: relative;
     overflow: hidden;
+    transition: background 0.5s ease;
   }
 
   .hero-section::before {
@@ -121,7 +124,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .swipeable-content-section {
-    background: white;
+    background: ${props => props.theme.colors.cardBackground};
     padding: 3rem 2rem;
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
@@ -141,7 +144,7 @@ const GlobalStyles = createGlobalStyle`
   .swipeable-content-section h2 {
     font-family: 'Poppins', sans-serif;
     font-size: 2rem;
-    color: #00897b;
+    color: ${props => props.theme.colors.primary};
     margin-bottom: 2rem;
     text-align: center;
     position: relative;
@@ -177,7 +180,7 @@ const GlobalStyles = createGlobalStyle`
     display: flex;
     overflow: hidden;
     border-radius: 16px;
-    background: #f8f9fa;
+    background: ${props => props.theme.colors.background === '#ffffff' ? '#f8f9fa' : props.theme.colors.background};
   }
 
   .swipe-slide {
@@ -278,7 +281,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .age-groups-section {
-    background: white;
+    background: ${props => props.theme.colors.cardBackground};
     padding: 4rem 2rem;
     border-radius: 20px;
     box-shadow: 0 10px 40px rgba(0,0,0,0.1);
@@ -288,7 +291,7 @@ const GlobalStyles = createGlobalStyle`
   .age-groups-section h2 {
     font-family: 'Poppins', sans-serif;
     font-size: 2.5rem;
-    color: #004d40;
+    color: ${props => props.theme.colors.primary};
     text-align: center;
     margin-bottom: 3rem;
   }
@@ -304,7 +307,7 @@ const GlobalStyles = createGlobalStyle`
 
   .age-card {
     min-width: 280px;
-    background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
+    background: ${props => props.theme.mode === 'dark' ? props.theme.colors.cardBackground : 'linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%)'};
     padding: 2rem;
     border-radius: 16px;
     text-align: center;
@@ -337,7 +340,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .age-card p {
-    color: #555;
+    color: ${props => props.theme.colors.text};
     margin-bottom: 1.5rem;
     line-height: 1.6;
   }
@@ -346,14 +349,14 @@ const GlobalStyles = createGlobalStyle`
     font-style: italic;
     color: #00897b;
     font-weight: 500;
-    background: rgba(255,255,255,0.5);
+    background: ${props => props.theme.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(255,255,255,0.5)'};
     padding: 1rem;
     border-radius: 8px;
     margin-top: 1rem;
   }
 
   .cta-section {
-    background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
+    background: ${props => props.theme.mode === 'dark' ? props.theme.colors.cardBackground : 'linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%)'};
     padding: 4rem 2rem;
     text-align: center;
     border-radius: 20px;
@@ -369,7 +372,7 @@ const GlobalStyles = createGlobalStyle`
 
   .cta-section p {
     font-size: 1.2rem;
-    color: #00695c;
+    color: ${props => props.theme.colors.secondary};
     margin-bottom: 2rem;
     max-width: 600px;
     margin-left: auto;
@@ -397,7 +400,7 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .cta-btn:hover {
-    background: #00695c;
+    background: ${props => props.theme.colors.secondary};
     transform: translateY(-2px);
     box-shadow: 0 8px 25px rgba(0,137,123,0.3);
   }
@@ -405,7 +408,7 @@ const GlobalStyles = createGlobalStyle`
   .cta-btn.secondary {
     background: transparent;
     color: #00897b;
-    border: 2px solid #00897b;
+    border: 2px solid ${props => props.theme.colors.primary};
   }
 
   .cta-btn.secondary:hover {

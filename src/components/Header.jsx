@@ -2,10 +2,11 @@ import React from 'react';
 import styled from 'styled-components';
 
 const HeaderContainer = styled.header`
-  background: linear-gradient(135deg, #00897b 0%, #00796b 100%);
+  background: ${props => props.theme.colors.headerGradient};
   color: white;
   padding: 2rem 0;
   text-align: center;
+  transition: background 0.5s ease;
 `;
 
 const HeaderContent = styled.div`
@@ -21,11 +22,13 @@ const Title = styled.h1`
   margin-bottom: 0.5rem;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.1);
 `;
 
 const Qualification = styled.p`
   font-size: 1.2rem;
-  opacity: 0.9;
+  opacity: 0.95;
+  font-weight: 300;
 `;
 
 const Header = () => {
