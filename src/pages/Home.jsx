@@ -15,7 +15,7 @@ const HeroSection = styled.section`
   align-items: center;
   position: relative;
   background: ${props => props.theme.mode === 'dark' ? props.theme.colors.background : props.theme.colors.accent};
-  padding: 10rem 0 8rem;
+  padding: 10rem 0 16rem;
   margin-bottom: 6rem;
   
   @media (max-width: 1024px) {
