@@ -12,9 +12,22 @@ const AgeGroupsSectionContainer = styled.div`
 const SectionTitle = styled.h2`
   font-family: 'Poppins', sans-serif;
   font-size: 2.5rem;
-  color: #004d40;
+  color: ${props => props.theme.colors.accent};
   text-align: center;
   margin-bottom: 3rem;
+  position: relative;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background: ${props => props.theme.colors.primary};
+    border-radius: 2px;
+  }
 `;
 
 const AgeCardsContainer = styled.div`
@@ -46,14 +59,15 @@ const AgeCardsContainer = styled.div`
 
 const AgeCard = styled.div`
   min-width: 280px;
-  background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
-  padding: 2rem;
-  border-radius: 16px;
+  background: ${props => props.theme.colors.cardBackground};
+  padding: 3rem 2rem;
+  border-radius: 24px;
   text-align: center;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-  transition: transform 0.3s, box-shadow 0.3s;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.05);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  border: 1px solid ${props => props.theme.colors.border};
   
   &::before {
     content: '';
@@ -62,12 +76,13 @@ const AgeCard = styled.div`
     left: 0;
     right: 0;
     height: 4px;
-    background: linear-gradient(135deg, #00897b, #00796b);
+    background: ${props => props.theme.colors.headerGradient};
   }
   
   &:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    transform: translateY(-12px);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+    border-color: ${props => props.theme.colors.primary};
   }
   
   @media (max-width: 768px) {
@@ -84,24 +99,26 @@ const AgeCard = styled.div`
 const AgeCardTitle = styled.h3`
   font-family: 'Poppins', sans-serif;
   font-size: 1.5rem;
-  color: #004d40;
-  margin-bottom: 1rem;
+  color: ${props => props.theme.colors.accent};
+  margin-bottom: 1.5rem;
 `;
 
 const AgeCardDescription = styled.p`
-  color: #555;
-  margin-bottom: 1.5rem;
-  line-height: 1.6;
+  color: ${props => props.theme.colors.text};
+  opacity: 0.7;
+  margin-bottom: 2rem;
+  line-height: 1.7;
 `;
 
 const AgeCardQuote = styled.div`
   font-style: italic;
-  color: #00897b;
-  font-weight: 500;
-  background: rgba(255,255,255,0.5);
-  padding: 1rem;
-  border-radius: 8px;
-  margin-top: 1rem;
+  color: ${props => props.theme.colors.primary};
+  font-weight: 600;
+  background: ${props => props.theme.colors.primary}08;
+  padding: 1.2rem;
+  border-radius: 12px;
+  margin-top: 1.5rem;
+  font-size: 0.95rem;
 `;
 
 const ageGroups = [

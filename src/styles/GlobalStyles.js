@@ -10,21 +10,39 @@ const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: 'Inter', sans-serif;
-    line-height: 1.6;
+    font-family: 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    line-height: 1.7;
     color: ${props => props.theme.colors.text};
     background-color: ${props => props.theme.colors.background};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    -webkit-text-size-adjust: 100%;
-    -ms-text-size-adjust: 100%;
-    transition: background-color 0.3s ease, color 0.3s ease;
+    transition: background-color 0.4s ease, color 0.4s ease;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: ${props => props.theme.colors.primary}33;
+    color: ${props => props.theme.colors.primary};
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+    line-height: 1.2;
+  }
+
+  .glass-card {
+    background: ${props => props.theme.colors.navBackground};
+    -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
+    border: 1px solid ${props => props.theme.colors.border};
   }
 
   .hero-section {
     background: ${props => props.theme.colors.headerGradient};
     color: white;
-    padding: 6rem 0 4rem;
+    padding: 8rem 0 6rem;
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -39,7 +57,7 @@ const GlobalStyles = createGlobalStyle`
     right: 0;
     bottom: 0;
     background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="grain" width="100" height="100" patternUnits="userSpaceOnUse"><circle cx="25" cy="25" r="1" fill="white" opacity="0.1"/><circle cx="75" cy="75" r="1" fill="white" opacity="0.1"/><circle cx="50" cy="10" r="0.5" fill="white" opacity="0.1"/></pattern></defs><rect width="100" height="100" fill="url(%23grain)"/></svg>');
-    opacity: 0.3;
+    opacity: 0.2;
   }
 
   .hero-content {
@@ -51,424 +69,199 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .hero-content h1 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 3.5rem;
-    font-weight: 700;
-    margin-bottom: 1rem;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
 
   .hero-content p {
-    font-size: 1.3rem;
-    max-width: 600px;
-    margin: 0 auto 2rem;
-    opacity: 0.9;
+    font-size: 1.4rem;
+    max-width: 700px;
+    margin: 0 auto 3rem;
+    opacity: 0.95;
+    font-weight: 400;
   }
 
   .hero-stats {
-    display: -ms-grid;
-    display: grid;
-    -ms-grid-columns: (minmax(200px, 1fr))[auto-fit];
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    display: flex;
+    justify-content: center;
     gap: 2rem;
-    margin-top: 3rem;
+    margin-top: 4rem;
+    flex-wrap: wrap;
   }
 
   .stat-card {
-    background: rgba(255,255,255,0.1);
-    padding: 2rem;
-    border-radius: 16px;
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    border: 1px solid rgba(255,255,255,0.2);
+    background: rgba(255,255,255,0.15);
+    padding: 2.5rem;
+    border-radius: 24px;
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255,255,255,0.25);
+    min-width: 220px;
+    transition: transform 0.3s ease;
+  }
+
+  .stat-card:hover {
+    transform: translateY(-5px);
   }
 
   .stat-number {
-    font-size: 2.5rem;
-    font-weight: 700;
+    font-size: 3rem;
+    font-weight: 800;
     margin-bottom: 0.5rem;
+    display: block;
   }
 
   .stat-label {
-    font-size: 0.9rem;
-    opacity: 0.8;
+    font-size: 1rem;
+    font-weight: 500;
+    opacity: 0.9;
+    text-transform: uppercase;
+    letter-spacing: 1px;
   }
 
   .main-content {
-    max-width: 1200px;
+    max-width: 1240px;
     margin: 0 auto;
-    padding: 4rem 2rem;
+    padding: 6rem 2rem;
   }
 
   .section-intro {
     text-align: center;
-    margin-bottom: 4rem;
+    margin-bottom: 5rem;
   }
 
   .section-intro h2 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 2.5rem;
-    color: #004d40;
-    margin-bottom: 1rem;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    font-size: 2.8rem;
+    color: ${props => props.theme.colors.accent};
+    margin-bottom: 1.5rem;
+    position: relative;
+    display: inline-block;
+  }
+
+  .section-intro h2::after {
+    content: '';
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: ${props => props.theme.colors.primary};
+    border-radius: 2px;
   }
 
   .section-intro p {
-    font-size: 1.2rem;
-    color: #666;
+    font-size: 1.25rem;
+    color: ${props => props.theme.colors.text};
+    opacity: 0.8;
     max-width: 800px;
     margin: 0 auto;
   }
 
   .swipeable-content-section {
     background: ${props => props.theme.colors.cardBackground};
-    padding: 3rem 2rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    margin-bottom: 3rem;
-    transition: -webkit-transform 0.3s, -moz-transform 0.3s, -o-transform 0.3s, transform 0.3s, -webkit-box-shadow 0.3s, -moz-box-shadow 0.3s, box-shadow 0.3s;
-  }
-
-  .swipeable-content-section:hover {
-    -webkit-transform: translateY(-5px);
-    -moz-transform: translateY(-5px);
-    -ms-transform: translateY(-5px);
-    -o-transform: translateY(-5px);
-    transform: translateY(-5px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
-  }
-
-  .swipeable-content-section h2 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 2rem;
-    color: ${props => props.theme.colors.primary};
-    margin-bottom: 2rem;
-    text-align: center;
-    position: relative;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-
-  .swipeable-content-section h2::after {
-    content: '';
-    position: absolute;
-    bottom: -10px;
-    left: 50%;
-    -webkit-transform: translateX(-50%);
-    -moz-transform: translateX(-50%);
-    -ms-transform: translateX(-50%);
-    -o-transform: translateX(-50%);
-    transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background: linear-gradient(135deg, #00897b, #00796b);
-    border-radius: 2px;
-  }
-
-  .swipeable-container {
-    position: relative;
-    max-width: 1000px;
-    margin: 0 auto;
-  }
-
-  .swipeable-content {
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    overflow: hidden;
-    border-radius: 16px;
-    background: ${props => props.theme.colors.background === '#ffffff' ? '#f8f9fa' : props.theme.colors.background};
-  }
-
-  .swipe-slide {
-    min-width: 100%;
-    transition: -webkit-transform 0.5s ease;
-    -moz-transition: -moz-transform 0.5s ease;
-    -o-transition: -o-transform 0.5s ease;
-    transition: transform 0.5s ease;
-    display: none;
-  }
-
-  .swipe-slide.active {
-    display: block;
-  }
-
-  .slide-content {
-    padding: 2rem;
-    text-align: center;
-  }
-
-  .slide-content img {
-    width: 100%;
-    max-width: 400px;
-    height: 250px;
-    -webkit-object-fit: cover;
-    -moz-object-fit: cover;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 1.5rem;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    padding: 4rem 2rem;
+    border-radius: 24px;
+    box-shadow: ${props => props.theme.colors.shadow};
+    margin-bottom: 6rem;
+    border: 1px solid ${props => props.theme.colors.border};
   }
 
   .slide-content h3 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.5rem;
-    color: #004d40;
-    margin-bottom: 1rem;
-  }
-
-  .slide-content p {
-    color: #666;
-    line-height: 1.6;
-    max-width: 600px;
-    margin: 0 auto;
-  }
-
-  .swipe-arrow {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background: rgba(255,255,255,0.9);
-    border: none;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    transition: all 0.3s;
-    z-index: 10;
-  }
-
-  .swipe-arrow:hover {
-    background: white;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-    transform: translateY(-50%) scale(1.1);
-  }
-
-  .swipe-arrow-left {
-    left: -25px;
-  }
-
-  .swipe-arrow-right {
-    right: -25px;
-  }
-
-  .swipe-dots {
-    display: flex;
-    justify-content: center;
-    margin-top: 2rem;
-    gap: 0.5rem;
-  }
-
-  .swipe-dot {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: #e0e0e0;
-    cursor: pointer;
-    transition: all 0.3s;
-  }
-
-  .swipe-dot.active {
-    background: #00897b;
-    transform: scale(1.2);
+    font-size: 1.8rem;
+    color: ${props => props.theme.colors.accent};
+    margin-bottom: 1.5rem;
   }
 
   .age-groups-section {
-    background: ${props => props.theme.colors.cardBackground};
-    padding: 4rem 2rem;
-    border-radius: 20px;
-    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-    margin-bottom: 3rem;
-  }
-
-  .age-groups-section h2 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 2.5rem;
-    color: ${props => props.theme.colors.primary};
-    text-align: center;
-    margin-bottom: 3rem;
-  }
-
-  .age-cards-container {
-    display: flex;
-    overflow-x: auto;
-    gap: 2rem;
-    padding: 1rem 0;
-    scroll-behavior: smooth;
-    -webkit-overflow-scrolling: touch;
+    padding: 6rem 0;
   }
 
   .age-card {
-    min-width: 280px;
-    background: ${props => props.theme.mode === 'dark' ? props.theme.colors.cardBackground : 'linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%)'};
-    padding: 2rem;
-    border-radius: 16px;
+    min-width: 300px;
+    background: ${props => props.theme.colors.cardBackground};
+    padding: 3rem 2.5rem;
+    border-radius: 24px;
     text-align: center;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .age-card::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 4px;
-    background: linear-gradient(135deg, #00897b, #00796b);
+    box-shadow: ${props => props.theme.colors.shadow};
+    border: 1px solid ${props => props.theme.colors.border};
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   }
 
   .age-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    border-color: ${props => props.theme.colors.primary};
   }
 
-  .age-card h3 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 1.5rem;
-    color: #004d40;
-    margin-bottom: 1rem;
-  }
-
-  .age-card p {
-    color: ${props => props.theme.colors.text};
-    margin-bottom: 1.5rem;
-    line-height: 1.6;
-  }
-
-  .age-card .quote {
-    font-style: italic;
-    color: #00897b;
-    font-weight: 500;
-    background: ${props => props.theme.mode === 'dark' ? 'rgba(255,255,255,0.05)' : 'rgba(255,255,255,0.5)'};
-    padding: 1rem;
-    border-radius: 8px;
-    margin-top: 1rem;
+  .age-card::before {
+    display: none;
   }
 
   .cta-section {
-    background: ${props => props.theme.mode === 'dark' ? props.theme.colors.cardBackground : 'linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%)'};
-    padding: 4rem 2rem;
+    background: ${props => props.theme.colors.headerGradient};
+    padding: 6rem 2rem;
     text-align: center;
-    border-radius: 20px;
-    margin-bottom: 3rem;
+    border-radius: 32px;
+    margin: 4rem 0;
+    color: white;
   }
 
   .cta-section h2 {
-    font-family: 'Poppins', sans-serif;
-    font-size: 2.5rem;
-    color: #004d40;
-    margin-bottom: 1rem;
+    color: white;
+    font-size: 3rem;
   }
 
   .cta-section p {
-    font-size: 1.2rem;
-    color: ${props => props.theme.colors.secondary};
-    margin-bottom: 2rem;
-    max-width: 600px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .cta-buttons {
-    display: flex;
-    gap: 1rem;
-    justify-content: center;
-    flex-wrap: wrap;
+    color: white;
+    opacity: 0.9;
   }
 
   .cta-btn {
-    background: #00897b;
-    color: white;
-    padding: 1rem 2rem;
-    border-radius: 50px;
+    background: white;
+    color: ${props => props.theme.colors.primary};
+    padding: 1.2rem 2.5rem;
+    border-radius: 100px;
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 700;
+    font-size: 1.1rem;
     transition: all 0.3s;
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
+    gap: 0.8rem;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
   }
 
   .cta-btn:hover {
-    background: ${props => props.theme.colors.secondary};
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0,137,123,0.3);
+    background: #f8f9fa;
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
   }
 
   .cta-btn.secondary {
     background: transparent;
-    color: #00897b;
-    border: 2px solid ${props => props.theme.colors.primary};
+    color: white;
+    border: 2px solid white;
   }
 
   .cta-btn.secondary:hover {
-    background: #00897b;
+    background: rgba(255,255,255,0.1);
     color: white;
   }
 
   @media (max-width: 768px) {
-    .hero-content h1 {
-      font-size: 2.5rem;
+    .main-content {
+      padding: 4rem 1.5rem;
     }
-
-    .swipeable-content-section {
-      padding: 2rem 1rem;
+    
+    .section-intro h2 {
+      font-size: 2.2rem;
     }
-
-    .swipe-arrow {
-      width: 40px;
-      height: 40px;
-    }
-
-    .swipe-arrow-left {
-      left: -20px;
-    }
-
-    .swipe-arrow-right {
-      right: -20px;
-    }
-
-    .age-cards-container {
-      gap: 1rem;
-    }
-
-    .age-card {
-      min-width: 250px;
-      padding: 1.5rem;
-    }
-
-    .cta-buttons {
-      flex-direction: column;
-      align-items: center;
-    }
-
-    .hero-stats {
-      grid-template-columns: repeat(2, 1fr);
-    }
-  }
-
-  @media (max-width: 480px) {
-    .hero-content h1 {
-      font-size: 2rem;
-    }
-
-    .hero-stats {
-      grid-template-columns: 1fr;
-    }
-
-    .age-card {
-      min-width: 220px;
-      padding: 1rem;
+    
+    .stat-card {
+      padding: 2rem;
+      min-width: 150px;
     }
   }
 `;

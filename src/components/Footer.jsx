@@ -3,9 +3,9 @@ import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const FooterContainer = styled.footer`
-  background: linear-gradient(135deg, #004d40 0%, #00695c 100%);
-  color: white;
-  padding: 3rem 0 1rem;
+  background: ${props => props.theme.colors.footerBackground};
+  color: ${props => props.theme.colors.footerText};
+  padding: 6rem 0 3rem;
 `;
 
 const FooterContent = styled.div`
@@ -21,35 +21,43 @@ const FooterContent = styled.div`
 const FooterSection = styled.div`
   h3 {
     font-family: 'Poppins', sans-serif;
-    font-size: 1.3rem;
-    margin-bottom: 1rem;
-    color: #e0f2f1;
+    font-size: 1.4rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    color: white;
   }
   
   p {
-    line-height: 1.6;
-    margin-bottom: 0.5rem;
-    color: #b2dfdb;
+    line-height: 1.8;
+    margin-bottom: 0.8rem;
+    color: ${props => props.theme.colors.footerText};
+    opacity: 0.8;
   }
   
   a {
     display: block;
-    color: #b2dfdb;
+    color: ${props => props.theme.colors.footerText};
     text-decoration: none;
-    margin-bottom: 0.5rem;
-    transition: color 0.3s;
+    margin-bottom: 0.8rem;
+    transition: all 0.3s ease;
+    opacity: 0.8;
     
     &:hover {
-      color: #e0f2f1;
+      opacity: 1;
+      color: ${props => props.theme.colors.primary};
+      transform: translateX(5px);
     }
   }
 `;
 
 const FooterBottom = styled.div`
   text-align: center;
-  padding-top: 2rem;
+  padding-top: 3rem;
+  margin-top: 4rem;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
-  color: #b2dfdb;
+  color: ${props => props.theme.colors.footerText};
+  opacity: 0.6;
+  font-size: 0.9rem;
 `;
 
 const Footer = () => {
@@ -63,9 +71,10 @@ const Footer = () => {
         </FooterSection>
         <FooterSection>
           <h3>Contact Info</h3>
-          <p>📞 9566293322</p>
-          <p>📧 kidzclinics@gmail.com</p>
-          <p>📍 Bengaluru, Karnataka</p>
+          <p>📞 +91 95662 93322</p>
+          <p>📧 drstpushpakidzclinic@gmail.com</p>
+          <p>📍 Dr. S.T.Pushpa's Kidz Clinic</p>
+          <p style={{ paddingLeft: '1.5rem', marginTop: '-0.5rem' }}>HBR Layout, Bengaluru 560043</p>
         </FooterSection>
         <FooterSection>
           <h3>Quick Links</h3>

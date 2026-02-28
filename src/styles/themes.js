@@ -2,58 +2,58 @@ export const lightTheme = {
     mode: 'light',
     colors: {
         background: '#ffffff',
-        text: '#333333',
-        primary: '#00897b',
-        secondary: '#00796b',
-        accent: '#004d40',
-        navBackground: '#ffffff',
-        navText: '#333333',
-        navHover: '#e0f2f1',
-        headerGradient: 'linear-gradient(135deg, #00897b 0%, #00796b 100%)',
-        cardBackground: '#f9f9f9',
-        footerBackground: '#333',
-        footerText: '#fff',
-        border: '#e0e0e0',
-        shadow: '0 2px 10px rgba(0,0,0,0.1)'
+        text: '#111827',
+        primary: '#0081ff',
+        secondary: '#00A3C4',
+        accent: '#0F172A',
+        navBackground: 'rgba(255, 255, 255, 0.8)',
+        navText: '#111827',
+        navHover: '#f3f4f6',
+        headerGradient: 'linear-gradient(135deg, #0081ff 0%, #00A3C4 100%)',
+        cardBackground: '#ffffff',
+        footerBackground: '#0F172A',
+        footerText: '#f3f4f6',
+        border: '#e5e7eb',
+        shadow: '0 4px 20px rgba(0, 0, 0, 0.05)'
     }
 };
 
 export const darkTheme = {
     mode: 'dark',
     colors: {
-        background: '#121212',
-        text: '#e0e0e0',
-        primary: '#80cbc4',
-        secondary: '#4db6ac',
-        accent: '#26a69a',
-        navBackground: '#1e1e1e',
-        navText: '#e0e0e0',
-        navHover: '#333333',
-        headerGradient: 'linear-gradient(135deg, #263238 0%, #37474f 100%)',
-        cardBackground: '#1e1e1e',
+        background: '#0F172A',
+        text: '#f3f4f6',
+        primary: '#3b82f6',
+        secondary: '#06b6d4',
+        accent: '#ffffff',
+        navBackground: 'rgba(15, 23, 42, 0.8)',
+        navText: '#f3f4f6',
+        navHover: '#1e293b',
+        headerGradient: 'linear-gradient(135deg, #1d4ed8 0%, #0891b2 100%)',
+        cardBackground: '#1e293b',
         footerBackground: '#000000',
-        footerText: '#e0e0e0',
-        border: '#333333',
-        shadow: '0 2px 10px rgba(0,0,0,0.5)'
+        footerText: '#94a3b8',
+        border: '#334155',
+        shadow: '0 4px 20px rgba(0, 0, 0, 0.4)'
     }
 };
 
 export const blueTheme = {
     mode: 'blue',
     colors: {
-        background: '#e3f2fd',
-        text: '#0d47a1',
-        primary: '#1565c0',
-        secondary: '#0d47a1',
-        accent: '#01579b',
-        navBackground: '#bbdefb',
-        navText: '#0d47a1',
-        navHover: '#90caf9',
-        headerGradient: 'linear-gradient(135deg, #1565c0 0%, #0d47a1 100%)',
+        background: '#f0f9ff',
+        text: '#0c4a6e',
+        primary: '#0369a1',
+        secondary: '#0eadff',
+        accent: '#082f49',
+        navBackground: 'rgba(224, 242, 254, 0.8)',
+        navText: '#0c4a6e',
+        navHover: '#bae6fd',
+        headerGradient: 'linear-gradient(135deg, #0369a1 0%, #0eadff 100%)',
         cardBackground: '#ffffff',
-        footerBackground: '#0d47a1',
-        footerText: '#ffffff',
-        border: '#90caf9',
-        shadow: '0 2px 10px rgba(13, 71, 161, 0.2)'
+        footerBackground: '#082f49',
+        footerText: '#f0f9ff',
+        border: '#bae6fd',
+        shadow: '0 4px 20px rgba(3, 105, 161, 0.1)'
     }
 };

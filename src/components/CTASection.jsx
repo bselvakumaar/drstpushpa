@@ -2,27 +2,31 @@ import React from 'react';
 import styled from 'styled-components';
 
 const CTASectionContainer = styled.div`
-  background: linear-gradient(135deg, #e0f2f1 0%, #b2dfdb 100%);
-  padding: 4rem 2rem;
+  background: ${props => props.theme.colors.headerGradient};
+  padding: 6rem 2rem;
   text-align: center;
-  border-radius: 20px;
-  margin-bottom: 3rem;
+  border-radius: 40px;
+  margin: 6rem 0;
+  color: white;
+  box-shadow: 0 30px 60px rgba(0, 129, 255, 0.2);
 `;
 
 const CTATitle = styled.h2`
   font-family: 'Poppins', sans-serif;
-  font-size: 2.5rem;
-  color: #004d40;
-  margin-bottom: 1rem;
+  font-size: 3rem;
+  color: white;
+  margin-bottom: 1.5rem;
 `;
 
 const CTADescription = styled.p`
-  font-size: 1.2rem;
-  color: #00695c;
-  margin-bottom: 2rem;
-  max-width: 600px;
+  font-size: 1.3rem;
+  color: white;
+  opacity: 0.9;
+  margin-bottom: 3.5rem;
+  max-width: 800px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 1.7;
 `;
 
 const CTAButtons = styled.div`
@@ -38,23 +42,26 @@ const CTAButtons = styled.div`
 `;
 
 const CTAButton = styled.a`
-  background: ${props => props.secondary ? 'transparent' : '#00897b'};
-  color: ${props => props.secondary ? '#00897b' : 'white'};
-  padding: 1rem 2rem;
-  border-radius: 50px;
+  background: ${props => props.secondary ? 'transparent' : 'white'};
+  color: ${props => props.secondary ? 'white' : props.theme.colors.primary};
+  padding: 1.25rem 2.5rem;
+  border-radius: 100px;
   text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s;
+  font-weight: 800;
+  font-size: 1.1rem;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
-  border: ${props => props.secondary ? '2px solid #00897b' : 'none'};
+  gap: 1rem;
+  border: ${props => props.secondary ? '2px solid rgba(255,255,255,0.4)' : 'none'};
+  box-shadow: ${props => props.secondary ? 'none' : '0 10px 25px rgba(0,0,0,0.1)'};
   
   &:hover {
-    background: ${props => props.secondary ? '#00897b' : '#00695c'};
-    color: white;
-    transform: translateY(-2px);
-    box-shadow: 0 8px 25px rgba(0,137,123,0.3);
+    background: ${props => props.secondary ? 'rgba(255,255,255,0.1)' : '#f8fafc'};
+    color: ${props => props.secondary ? 'white' : props.theme.colors.primary};
+    transform: translateY(-5px);
+    box-shadow: 0 15px 35px rgba(0,0,0,0.15);
+    border-color: white;
   }
 `;
 
@@ -66,21 +73,21 @@ const CTASection = () => {
         Book an appointment with Dr.S.T.Pushpa for expert pediatric care and guidance. We're here to support your child's health journey every step of the way.
       </CTADescription>
       <CTAButtons>
-        <CTAButton 
-          href="https://wa.me/919940636769" 
-          target="_blank" 
+        <CTAButton
+          href="https://wa.me/919940636769"
+          target="_blank"
           rel="noopener noreferrer"
         >
-          <img 
-            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" 
-            alt="WhatsApp" 
-            width="20" 
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg"
+            alt="WhatsApp"
+            width="20"
             height="20"
           />
           Book Appointment on WhatsApp
         </CTAButton>
-        <CTAButton 
-          href="/contact" 
+        <CTAButton
+          href="/contact"
           secondary
         >
           📞 Contact Information

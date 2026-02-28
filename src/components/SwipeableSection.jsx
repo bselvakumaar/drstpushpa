@@ -2,16 +2,17 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 const SwipeableSectionContainer = styled.div`
-  background: white;
-  padding: 3rem 2rem;
-  border-radius: 20px;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-  margin-bottom: 3rem;
-  transition: transform 0.3s, box-shadow 0.3s;
+  background: ${props => props.theme.colors.cardBackground};
+  padding: 4rem;
+  border-radius: 32px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.04);
+  margin-bottom: 4rem;
+  border: 1px solid ${props => props.theme.colors.border};
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   
   &:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 20px 60px rgba(0,0,0,0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 30px 80px rgba(0,0,0,0.08);
   }
   
   @media (max-width: 768px) {
@@ -21,13 +22,11 @@ const SwipeableSectionContainer = styled.div`
 
 const SectionTitle = styled.h2`
   font-family: 'Poppins', sans-serif;
-  font-size: 2rem;
-  color: #00897b;
-  margin-bottom: 2rem;
+  font-size: 2.2rem;
+  color: ${props => props.theme.colors.accent};
+  margin-bottom: 3rem;
   text-align: center;
   position: relative;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   
   &::after {
     content: '';
@@ -37,7 +36,7 @@ const SectionTitle = styled.h2`
     transform: translateX(-50%);
     width: 60px;
     height: 3px;
-    background: linear-gradient(135deg, #00897b, #00796b);
+    background: ${props => props.theme.colors.primary};
     border-radius: 2px;
   }
 `;
@@ -78,16 +77,18 @@ const SlideImage = styled.img`
 
 const SlideTitle = styled.h3`
   font-family: 'Poppins', sans-serif;
-  font-size: 1.5rem;
-  color: #004d40;
-  margin-bottom: 1rem;
+  font-size: 1.8rem;
+  color: ${props => props.theme.colors.accent};
+  margin-bottom: 1.5rem;
 `;
 
 const SlideDescription = styled.p`
-  color: #666;
-  line-height: 1.6;
-  max-width: 600px;
+  color: ${props => props.theme.colors.text};
+  opacity: 0.7;
+  line-height: 1.8;
+  max-width: 650px;
   margin: 0 auto;
+  font-size: 1.1rem;
 `;
 
 const SwipeArrow = styled.button`
@@ -146,7 +147,7 @@ const SwipeDot = styled.button`
   width: 12px;
   height: 12px;
   border-radius: 50%;
-  background: ${props => props.active ? '#00897b' : '#e0e0e0'};
+  background: ${props => props.active ? props.theme.colors.primary : '#e2e8f0'};
   cursor: pointer;
   transition: all 0.3s;
   transform: ${props => props.active ? 'scale(1.2)' : 'scale(1)'};
@@ -187,10 +188,10 @@ const SwipeableSection = ({ title, slides, sectionId }) => {
       <SwipeableContainer>
         <SwipeArrowLeft onClick={() => changeSlide(-1)} aria-label="Previous slide">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M15 18l-6-6 6-6"/>
+            <path d="M15 18l-6-6 6-6" />
           </svg>
         </SwipeArrowLeft>
-        
+
         <SwipeableContent>
           {slides.map((slide, index) => (
             <SwipeSlide key={index} active={index === currentSlide}>
@@ -202,14 +203,14 @@ const SwipeableSection = ({ title, slides, sectionId }) => {
             </SwipeSlide>
           ))}
         </SwipeableContent>
-        
+
         <SwipeArrowRight onClick={() => changeSlide(1)} aria-label="Next slide">
           <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-            <path d="M9 18l6-6-6-6"/>
+            <path d="M9 18l6-6-6-6" />
           </svg>
         </SwipeArrowRight>
       </SwipeableContainer>
-      
+
       <SwipeDots>
         {slides.map((_, index) => (
           <SwipeDot
