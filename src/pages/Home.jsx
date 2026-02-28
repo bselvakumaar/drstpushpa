@@ -10,16 +10,18 @@ const HomeContainer = styled.div`
 `;
 
 const HeroSection = styled.section`
-  min-height: 70vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   position: relative;
   background: ${props => props.theme.mode === 'dark' ? props.theme.colors.background : props.theme.colors.accent};
-  padding: 10rem 0 4rem;
+  padding: 10rem 0 8rem;
+  margin-bottom: 6rem;
   
   @media (max-width: 1024px) {
     min-height: auto;
-    padding: 10rem 0 6rem;
+    padding: 10rem 0 4rem;
+    margin-bottom: 0;
     flex-direction: column;
   }
 `;
@@ -94,8 +96,7 @@ const TextBlock = styled.div`
 const HeroImageWrapper = styled.div`
   position: relative;
   border-radius: 40px;
-  overflow: hidden;
-  box-shadow: 0 40px 100px rgba(0,0,0,0.3);
+  overflow: visible;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -109,6 +110,7 @@ const HeroImageWrapper = styled.div`
     object-fit: contain;
     display: block;
     border-radius: 40px;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.3);
   }
 
   &::after {
@@ -117,10 +119,11 @@ const HeroImageWrapper = styled.div`
     inset: 0;
     box-shadow: inset 0 0 0 1px rgba(255,255,255,0.2);
     border-radius: 40px;
+    pointer-events: none;
   }
 
   @media (max-width: 1024px) {
-    height: 500px;
+    height: auto;
     max-width: 800px;
     margin: 0 auto;
   }
@@ -128,11 +131,13 @@ const HeroImageWrapper = styled.div`
 
 const FloatingStats = styled.div`
   position: absolute;
-  bottom: -60px;
-  left: 5%;
-  right: 5%;
-  background: ${props => props.theme.colors.cardBackground};
-  padding: 3rem 2rem;
+  bottom: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 1100px;
+  background: ${props => props.theme.mode === 'dark' ? 'rgba(30, 41, 59, 0.85)' : 'rgba(255, 255, 255, 0.95)'};
+  padding: 3.5rem 2rem;
   border-radius: 30px;
   display: flex;
   justify-content: space-around;
@@ -140,14 +145,18 @@ const FloatingStats = styled.div`
   flex-wrap: wrap;
   gap: 2rem;
   box-shadow: 0 25px 60px rgba(0,0,0,0.08);
-  border: 1px solid ${props => props.theme.colors.border};
+  border: 1px solid rgba(255,255,255,0.2);
   z-index: 10;
   backdrop-filter: blur(20px);
-  background: ${props => props.theme.mode === 'dark' ? 'rgba(30, 41, 59, 0.95)' : 'rgba(255, 255, 255, 0.95)'};
+  -webkit-backdrop-filter: blur(20px);
 
   @media (max-width: 1024px) {
-    position: static;
-    margin: 4rem 2rem 0;
+    position: relative;
+    bottom: auto;
+    left: auto;
+    transform: none;
+    width: calc(100% - 4rem);
+    margin: -3rem 2rem 4rem;
   }
 `;
 
@@ -156,36 +165,45 @@ const StatItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0 2rem;
+  gap: 0.75rem;
+  padding: 0 1rem;
+  flex: 1;
+  min-width: 200px;
   
   .icon-wrap {
-    background: ${props => props.theme.colors.primary}15;
+    background: linear-gradient(135deg, ${props => props.theme.colors.primary}22, ${props => props.theme.colors.secondary}22);
     color: ${props => props.theme.colors.primary};
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 1.5rem;
+    font-size: 2rem;
     margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
+  }
+
+  &:hover .icon-wrap {
+    transform: scale(1.1) rotate(5deg);
   }
 
   .number {
     font-size: 3.5rem;
     font-weight: 800;
-    color: ${props => props.theme.colors.primary};
     line-height: 1;
+    background: linear-gradient(to right, ${props => props.theme.colors.primary}, ${props => props.theme.colors.secondary});
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
   
   .label {
-    font-size: 1rem;
+    font-size: 1.1rem;
     color: ${props => props.theme.colors.text};
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 1.5px;
-    opacity: 0.7;
+    letter-spacing: 2px;
+    opacity: 0.8;
   }
 `;
 const IntroSection = styled.section`

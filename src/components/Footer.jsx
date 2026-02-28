@@ -74,7 +74,7 @@ const Footer = () => {
           <p>📞 +91 95662 93322</p>
           <p>📧 drstpushpakidzclinic@gmail.com</p>
           <p>📍 Dr. S.T.Pushpa's Kidz Clinic</p>
-          <p style={{ paddingLeft: '1.5rem', marginTop: '-0.5rem' }}>HBR Layout, Bengaluru 560043</p>
+          <p style={{ paddingLeft: '1.5rem', marginTop: '-0.5rem' }}>ASR Complex, No.41 & 42, 89/5, Prakruthi Township, 1st Block, Horamavu Agara Main Road, Bangalore, Karnataka 560043.</p>
         </FooterSection>
         <FooterSection>
           <h3>Quick Links</h3>

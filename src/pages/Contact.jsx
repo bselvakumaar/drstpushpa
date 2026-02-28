@@ -261,7 +261,7 @@ const Contact = () => {
               style={{ border: 0, borderRadius: '30px' }}
               loading="lazy"
               allowFullScreen
-              src="https://maps.google.com/maps?q=Dr.%20S.T.Pushpa's%20Kidz%20Clinic,%20HBR%20Layout,%20Bengaluru&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=ASR%20Complex,%20Prakruthi%20Township,%20Horamavu%20Agara%20Main%20Road,%20Bengaluru&t=&z=15&ie=UTF8&iwloc=&output=embed"
             ></iframe>
           </div>
         </HeroContent>
@@ -275,7 +275,7 @@ const Contact = () => {
               <div className="icon">📍</div>
               <div className="details">
                 <h4>Clinic Address</h4>
-                <p>Dr. S.T.Pushpa's Kidz Clinic<br />HBR Layout, Bengaluru, 560043</p>
+                <p>Dr. S.T.Pushpa's Kidz Clinic<br />ASR Complex, No.41 & 42, 89/5, Prakruthi Township, 1st Block, Horamavu Agara Main Road, Bangalore, Karnataka 560043.</p>
               </div>
             </div>
             <div className="item">
@@ -291,9 +291,10 @@ const Contact = () => {
             <div className="item">
               <div className="icon">🕒</div>
               <div className="details">
-                <h4>Mon - Sat</h4>
-                <p>10:00 AM - 1:00 PM</p>
-                <p>5:00 PM - 8:30 PM</p>
+                <h4>Monday - Saturday</h4>
+                <p>11:00 AM - 1:00 PM</p>
+                <p>5:00 PM - 9:00 PM</p>
+                <p style={{ marginTop: '0.5rem', opacity: 0.8 }}>Sunday Holiday</p>
               </div>
             </div>
           </ContactCard>
