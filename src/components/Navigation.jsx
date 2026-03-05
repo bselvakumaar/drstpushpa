@@ -64,7 +64,7 @@ const Brand = styled(Link)`
   .divider {
     width: 2px;
     height: 35px;
-    background: ${props => props.$scrolled ? props.theme.colors.primary : 'rgba(255,255,255,0.3)'};
+    background: ${props => props.$scrolled ? props.theme.colors.primary : (props.theme.mode === 'light' ? 'rgba(0,0,0,0.3)' : 'rgba(255,255,255,0.3)')};
     border-radius: 4px;
     transition: background 0.3s ease;
   }

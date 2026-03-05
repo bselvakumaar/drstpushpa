@@ -86,7 +86,7 @@ const Footer = () => {
         </FooterSection>
       </FooterContent>
       <FooterBottom>
-        <p>&copy; 2025 Kidz Clinic. All rights reserved.</p>
+        <p>&copy; 2025 Dr. S.T. Pushpa | Kidz Clinic. All rights reserved.</p>
       </FooterBottom>
     </FooterContainer>
   );
