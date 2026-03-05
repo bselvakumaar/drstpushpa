@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { FaPhone } from 'react-icons/fa';
 
 const CTASectionContainer = styled.div`
   background: ${props => props.theme.colors.headerGradient};
@@ -102,7 +103,7 @@ const CTASection = () => {
           href="/contact"
           secondary
         >
-          📞 Contact Information
+          <FaPhone /> Contact Information
         </CTAButton>
       </CTAButtons>
     </CTASectionContainer>

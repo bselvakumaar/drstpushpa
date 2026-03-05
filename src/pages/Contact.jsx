@@ -1,7 +1,7 @@
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import CTASection from '../components/CTASection';
-import { FaPhone, FaWhatsapp, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaPhone, FaWhatsapp, FaEnvelope, FaMapMarkerAlt, FaClock, FaCheckCircle } from 'react-icons/fa';
 
 const ContactContainer = styled.div`
   overflow-x: hidden;
@@ -213,10 +213,11 @@ const ContactCard = styled.div`
   }
 
   .address-text {
-    font-size: 0.98rem;
+    font-size: 0.95rem;
     color: ${props => props.theme.colors.text};
-    line-height: 1.7;
+    line-height: 1.6;
     opacity: 0.85;
+    margin-bottom: 0.5rem;
   }
 
   .maps-link {
@@ -253,7 +254,15 @@ const ContactCard = styled.div`
 
     &:hover {
       border-color: ${props => props.theme.colors.primary};
-      transform: translateX(4px);
+      transform: translateX(6px);
+      background: ${props => props.theme.colors.cardBackground};
+    }
+
+    @media (max-width: 480px) {
+      padding: 0.85rem 1rem;
+      gap: 0.8rem;
+      
+      &:hover { transform: none; }
     }
 
     .chip-icon {
@@ -270,22 +279,28 @@ const ContactCard = styled.div`
     }
 
     .chip-number {
-      font-size: 1rem;
+      font-size: 1.05rem;
       font-weight: 700;
       color: ${props => props.theme.colors.text};
+      letter-spacing: 0.2px;
+      white-space: nowrap;
+
+      @media (max-width: 375px) {
+        font-size: 0.95rem;
+      }
     }
 
     .chip-type {
       margin-left: auto;
-      font-size: 0.72rem;
-      font-weight: 700;
+      font-size: 0.65rem;
+      font-weight: 800;
       text-transform: uppercase;
-      letter-spacing: 0.5px;
+      letter-spacing: 0.8px;
       color: ${props => props.theme.colors.primary};
-      opacity: 0.8;
-      background: ${props => props.theme.colors.primary}15;
-      padding: 0.2rem 0.5rem;
-      border-radius: 6px;
+      opacity: 0.9;
+      background: ${props => props.theme.colors.primary}12;
+      padding: 0.25rem 0.6rem;
+      border-radius: 8px;
     }
   }
 
@@ -466,7 +481,7 @@ const Contact = () => {
 
             {/* Address */}
             <div className="contact-section">
-              <div className="section-label"><span className="label-icon">📍</span> Clinic Address</div>
+              <div className="section-label"><span className="label-icon"><FaMapMarkerAlt /></span> Clinic Address</div>
               <p className="address-text">
                 Kidz Clinic — ASR Complex, No.41 &amp; 42, 89/5,<br />
                 Prakruthi Township, 1st Block,<br />
@@ -517,7 +532,7 @@ const Contact = () => {
           <ContactCard>
             <h3>Clinical Hours</h3>
             <div className="item">
-              <div className="icon">🕒</div>
+              <div className="icon"><FaClock /></div>
               <div className="details">
                 <h4>Monday - Saturday</h4>
                 <p>11:00 AM - 1:00 PM</p>
@@ -548,8 +563,8 @@ const Contact = () => {
               boxShadow: '0 10px 30px rgba(37, 211, 102, 0.35)'
             }}>
               {submitted
-                ? '✓ Opening WhatsApp...'
-                : <><span style={{ fontSize: '1.4rem' }}>💬</span> Submit via WhatsApp</>}
+                ? <><FaCheckCircle /> Opening WhatsApp...</>
+                : <><FaWhatsapp style={{ fontSize: '1.4rem' }} /> Submit via WhatsApp</>}
             </button>
           </StyledForm>
         </FormCard>

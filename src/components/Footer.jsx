@@ -103,7 +103,7 @@ const Footer = () => {
         </FooterSection>
       </FooterContent>
       <FooterBottom>
-        <p>&copy; 2025 Dr. S.T. Pushpa | Kidz Clinic. All rights reserved.</p>
+        <p>&copy; {new Date().getFullYear()} Dr. S.T. Pushpa | Kidz Clinic. All rights reserved.</p>
       </FooterBottom>
     </FooterContainer>
   );

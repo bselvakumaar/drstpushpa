@@ -4,6 +4,7 @@ import SwipeableSection from '../components/SwipeableSection';
 import AgeGroupsSection from '../components/AgeGroupsSection';
 import CTASection from '../components/CTASection';
 import { useTheme } from '../context/ThemeContext';
+import { FaStar, FaUsers, FaHeartbeat } from 'react-icons/fa';
 
 const HomeContainer = styled.div`
   overflow-x: hidden;
@@ -200,12 +201,15 @@ const FloatingStats = styled.div`
     border-radius: 20px;
   }
 
-  @media (max-width: 480px) {
-    flex-direction: column;
+   @media (max-width: 480px) {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
     width: calc(100% - 2rem);
     margin: 1rem 1rem 2rem;
-    padding: 1.5rem 1rem;
-    gap: 1.25rem;
+    padding: 1.5rem 0.5rem;
+    gap: 1.5rem 0.5rem;
+    border-radius: 20px;
   }
 `;
 
@@ -217,7 +221,12 @@ const StatItem = styled.div`
   gap: 0.75rem;
   padding: 0 1rem;
   flex: 1;
-  min-width: 150px;
+  min-width: 120px;
+  
+  @media (max-width: 480px) {
+    min-width: 140px;
+    padding: 0 0.5rem;
+  }
   
   .icon-wrap {
     background: linear-gradient(135deg, ${props => props.theme.colors.primary}22, ${props => props.theme.colors.secondary}22);
@@ -238,12 +247,16 @@ const StatItem = styled.div`
   }
 
   .number {
-    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-size: clamp(1.8rem, 5vw, 3rem);
     font-weight: 800;
     line-height: 1;
     background: linear-gradient(to right, ${props => props.theme.colors.primary}, ${props => props.theme.colors.secondary});
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+
+    @media (max-width: 480px) {
+      font-size: 1.8rem;
+    }
   }
   
   .label {
@@ -421,17 +434,17 @@ const Home = () => {
         </HeroContent>
         <FloatingStats>
           <StatItem>
-            <div className="icon-wrap">🌟</div>
+            <div className="icon-wrap"><FaStar /></div>
             <div className="number">20+</div>
             <div className="label">Years of Care</div>
           </StatItem>
           <StatItem>
-            <div className="icon-wrap">👩‍👧‍👦</div>
+            <div className="icon-wrap"><FaUsers /></div>
             <div className="number">10K+</div>
             <div className="label">Happy Parents</div>
           </StatItem>
           <StatItem>
-            <div className="icon-wrap">⚕️</div>
+            <div className="icon-wrap"><FaHeartbeat /></div>
             <div className="number">24/7</div>
             <div className="label">Expert Support</div>
           </StatItem>
