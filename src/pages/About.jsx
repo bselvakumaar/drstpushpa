@@ -6,17 +6,19 @@ const AboutContainer = styled.div`
   overflow-x: hidden;
 `;
 
-const AboutHero = styled.section`
-  min-height: 70vh;
+const HeroSection = styled.section`
+  min-height: 80vh;
   display: flex;
   align-items: center;
   position: relative;
-  background: ${props => props.theme.mode === 'dark' ? props.theme.colors.background : props.theme.colors.accent};
-  padding: 10rem 0 4rem;
+  background: ${props => props.theme.colors.background};
+  padding: 10rem 0 16rem;
+  margin-bottom: 6rem;
   
   @media (max-width: 1024px) {
     min-height: auto;
     padding: 10rem 0 6rem;
+    margin-bottom: 0;
     flex-direction: column;
   }
 `;
@@ -31,6 +33,14 @@ const HeroBackground = styled.div`
   z-index: 1;
   clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
 
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 30-30 30L0 30z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.3;
+  }
+
   @media (max-width: 1024px) {
     width: 100%;
     height: 60%;
@@ -43,14 +53,14 @@ const HeroBackground = styled.div`
 const HeroContent = styled.div`
   position: relative;
   z-index: 2;
-  max-width: 1400px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 0 4rem;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.2fr;
   align-items: center;
-  gap: 4rem;
+  gap: 2rem;
 
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
@@ -60,19 +70,24 @@ const HeroContent = styled.div`
 `;
 
 const TextBlock = styled.div`
-  color: white;
+  color: ${props => props.theme.mode === 'light' ? props.theme.colors.text : 'white'};
   
   h1 {
-    font-size: clamp(3rem, 6vw, 5rem);
+    font-size: clamp(3rem, 5.5vw, 5rem);
     font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 2rem;
-    letter-spacing: -2px;
+    line-height: 1;
+    margin-bottom: 2.5rem;
+    letter-spacing: -3px;
+    
+    .accent {
+      color: ${props => props.theme.colors.secondary};
+    }
   }
 
   p {
     font-size: 1.4rem;
-    opacity: 0.9;
+    color: ${props => props.theme.mode === 'light' ? props.theme.colors.text : '#ffffff'};
+    opacity: ${props => props.theme.mode === 'light' ? '0.8' : '0.95'};
     max-width: 600px;
     margin-bottom: 3rem;
     line-height: 1.6;
@@ -288,22 +303,22 @@ const About = () => {
 
   return (
     <AboutContainer>
-      <AboutHero>
+      <HeroSection>
         <HeroBackground />
         <HeroContent>
           <TextBlock>
-            <h1>Meet Dr. S.T. Pushpa</h1>
+            <h1>About <br /> <span className="accent">Dr. S.T. Pushpa</span></h1>
             <p>
               A legacy of compassion and excellence in pediatric care for over 15 years. Dedicated to nurturing the health and futures of little ones.
             </p>
           </TextBlock>
           <ProfileCard className="floating">
-            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80" alt="Dr. S.T. Pushpa" />
+            <img src="/service_1.jpg" alt="Dr. S.T. Pushpa" />
             <h2>Dr. S.T. Pushpa</h2>
             <div className="subtitle">Paediatrician & Child Specialist</div>
           </ProfileCard>
         </HeroContent>
-      </AboutHero>
+      </HeroSection>
 
       <StatsBar>
         <StatItem>

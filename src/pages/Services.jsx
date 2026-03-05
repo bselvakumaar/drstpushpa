@@ -7,16 +7,18 @@ const ServicesContainer = styled.div`
 `;
 
 const HeroSection = styled.section`
-  min-height: 70vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   position: relative;
-  background: ${props => props.theme.mode === 'dark' ? props.theme.colors.background : props.theme.colors.accent};
-  padding: 10rem 0 4rem;
+  background: ${props => props.theme.colors.background};
+  padding: 10rem 0 16rem;
+  margin-bottom: 6rem;
   
   @media (max-width: 1024px) {
     min-height: auto;
     padding: 10rem 0 6rem;
+    margin-bottom: 0;
     flex-direction: column;
   }
 `;
@@ -31,6 +33,14 @@ const HeroBackground = styled.div`
   z-index: 1;
   clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
 
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 30-30 30L0 30z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.3;
+  }
+
   @media (max-width: 1024px) {
     width: 100%;
     height: 60%;
@@ -43,14 +53,14 @@ const HeroBackground = styled.div`
 const HeroContent = styled.div`
   position: relative;
   z-index: 2;
-  max-width: 1400px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 0 4rem;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.2fr;
   align-items: center;
-  gap: 4rem;
+  gap: 2rem;
 
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
@@ -60,19 +70,24 @@ const HeroContent = styled.div`
 `;
 
 const TextBlock = styled.div`
-  color: white;
+  color: ${props => props.theme.mode === 'light' ? props.theme.colors.text : 'white'};
   
   h1 {
-    font-size: clamp(3rem, 6vw, 5rem);
+    font-size: clamp(3rem, 5.5vw, 5rem);
     font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 2rem;
-    letter-spacing: -2px;
+    line-height: 1;
+    margin-bottom: 2.5rem;
+    letter-spacing: -3px;
+    
+    .accent {
+      color: ${props => props.theme.colors.secondary};
+    }
   }
 
   p {
     font-size: 1.4rem;
-    opacity: 0.9;
+    color: ${props => props.theme.mode === 'light' ? props.theme.colors.text : '#ffffff'};
+    opacity: ${props => props.theme.mode === 'light' ? '0.8' : '0.95'};
     max-width: 600px;
     margin-bottom: 3rem;
     line-height: 1.6;
@@ -131,6 +146,8 @@ const ServiceCard = styled.div`
     height: 240px;
     width: 100%;
     overflow: hidden;
+    position: relative;
+    background: ${props => props.theme.colors.background};
     
     img {
       width: 100%;
@@ -233,8 +250,8 @@ const ServiceCard = styled.div`
 `;
 
 const BenefitSection = styled.section`
-  padding: 6rem 4rem;
-  background: ${props => props.theme.mode === 'light' ? '#f8fafc' : props.theme.colors.cardBackground};
+  padding: 8rem 4rem;
+  background: ${props => props.theme.mode === 'light' ? '#f1f5f9' : props.theme.colors.cardBackground};
 `;
 
 const BenefitGrid = styled.div`
@@ -308,89 +325,83 @@ const ServiceImageSlider = ({ images, title }) => {
   );
 };
 
-const Services = () => {
-  const servicesData = [
-    {
-      icon: '🍼',
-      title: 'Neonatology & Infant Care',
-      images: [
-        '/service_1.jpg',
-        '/service_2.jpg',
-        '/service_3.png'
-      ],
-      description: 'Sophisticated neonatal health screening and comprehensive lactation support for your newborn.',
-      features: ['Electronic Health Monitoring', 'Lactation Consulting', 'Safety Screenings', 'Nutritional Roadmap']
-    },
-    {
-      icon: '🛡️',
-      title: 'Advanced Immunization',
-      images: [
-        '/service_4.png',
-        '/service_5.jpg',
-        '/service_5.webp'
-      ],
-      description: 'Precision vaccination protocols following global IAP standards for robust immunity.',
-      features: ['Painless Delivery Systems', 'Automated Reminder Logs', 'Global Vaccine Standards', 'Catch-up Programs']
-    },
-    {
-      icon: '📈',
-      title: 'Growth & Development',
-      images: [
-        '/service_7.jpg',
-        '/service_8.jpg',
-        '/service_9.jpg'
-      ],
-      description: 'Deep physical and cognitive assessments to ensure every milestone is reached.',
-      features: ['Developmental Profiling', 'Social Skill Monitoring', 'Early Intervention', 'Puberty Management']
-    },
-    {
-      icon: '🥗',
-      title: 'Clinical Nutrition',
-      images: [
-        '/service_10.webp',
-        '/service_11.jpg',
-        '/service_12.png'
-      ],
-      description: 'Evidence-based dietary roadmaps for metabolic health and robust growth.',
-      features: ['Obesity & BMI Tracking', 'Vitamin Deficiency Care', 'Food Allergy Planning', 'Metabolic Screening']
-    },
-    {
-      icon: '💨',
-      title: 'Asthma & Allergy',
-      images: [
-        '/service_14.jpg',
-        '/service_14.webp',
-        '/service_1.jpg'
-      ],
-      description: 'Advanced pulmonary diagnostics and environmental allergy management.',
-      features: ['Pulmonary Function Test', 'Allergen Identification', 'Asthma Action Plans', 'Immunotherapy']
-    },
-    {
-      icon: '🌙',
-      title: 'Pediatric Sleep',
-      images: [
-        '/service_2.jpg',
-        '/service_3.png',
-        '/service_4.png'
-      ],
-      description: 'Specialized interventions to resolve sleep disruptions and support restorative rest.',
-      features: ['Sleep Apnea Screening', 'Restorative Sleep Hygiene', 'Circadian Adjustments', 'Insomnia Solutions']
-    },
-  ];
+const servicesData = [
+  {
+    icon: '🍼',
+    title: 'Neonatology & Infant Care',
+    images: [
+      '/service_1.jpg',
+      '/service_2.jpg'
+    ],
+    description: 'Sophisticated neonatal health screening and comprehensive lactation support for your newborn.',
+    features: ['Electronic Health Monitoring', 'Lactation Consulting', 'Safety Screenings', 'Nutritional Roadmap']
+  },
+  {
+    icon: '🛡️',
+    title: 'Advanced Immunization',
+    images: [
+      '/service_4.png',
+      '/service_5.jpg'
+    ],
+    description: 'Precision vaccination protocols following global IAP standards for robust immunity.',
+    features: ['Painless Delivery Systems', 'Automated Reminder Logs', 'Global Vaccine Standards', 'Catch-up Programs']
+  },
+  {
+    icon: '📈',
+    title: 'Growth & Development',
+    images: [
+      '/service_7.jpg',
+      '/service_8.jpg'
+    ],
+    description: 'Deep physical and cognitive assessments to ensure every milestone is reached.',
+    features: ['Developmental Profiling', 'Social Skill Monitoring', 'Early Intervention', 'Puberty Management']
+  },
+  {
+    icon: '🥗',
+    title: 'Clinical Nutrition',
+    images: [
+      '/service_10.webp',
+      '/service_11.jpg'
+    ],
+    description: 'Evidence-based dietary roadmaps for metabolic health and robust growth.',
+    features: ['Obesity & BMI Tracking', 'Vitamin Deficiency Care', 'Food Allergy Planning', 'Metabolic Screening']
+  },
+  {
+    icon: '💨',
+    title: 'Asthma & Allergy',
+    images: [
+      '/service_14.jpg',
+      '/service_14.webp'
+    ],
+    description: 'Advanced pulmonary diagnostics and environmental allergy management.',
+    features: ['Pulmonary Function Test', 'Allergen Identification', 'Asthma Action Plans', 'Immunotherapy']
+  },
+  {
+    icon: '🌙',
+    title: 'Pediatric Sleep',
+    images: [
+      '/service_2.jpg',
+      '/service_3.png'
+    ],
+    description: 'Specialized interventions to resolve sleep disruptions and support restorative rest.',
+    features: ['Sleep Apnea Screening', 'Restorative Sleep Hygiene', 'Circadian Adjustments', 'Insomnia Solutions']
+  },
+];
 
+const Services = () => {
   return (
     <ServicesContainer>
       <HeroSection>
         <HeroBackground />
         <HeroContent>
           <TextBlock>
-            <h1 className="text-gradient">Pediatric <br /> Excellence</h1>
+            <h1>Pediatric <br /> <span className="accent">Excellence</span></h1>
             <p>
               World-class clinical precision blended with compassionate care. Scaling from infancy to adolescence with specialized medical attention.
             </p>
           </TextBlock>
           <HeroImageWrapper className="floating">
-            <img src="/service_3.png" alt="Pediatric Services Clinical Excellence" />
+            <img src="/service_12.png" alt="Pediatric Clinical Excellence" />
           </HeroImageWrapper>
         </HeroContent>
       </HeroSection>
@@ -398,7 +409,9 @@ const Services = () => {
       <ServicesGrid>
         {servicesData.map((service, index) => (
           <ServiceCard key={index}>
-            <ServiceImageSlider images={service.images} title={service.title} />
+            {service.images && service.images.length > 0 && (
+              <ServiceImageSlider images={service.images} title={service.title} />
+            )}
             <div className="service-content">
               <div className="icon-box">{service.icon}</div>
               <h3>{service.title}</h3>

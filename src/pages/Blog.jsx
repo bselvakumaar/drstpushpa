@@ -7,16 +7,18 @@ const BlogContainer = styled.div`
 `;
 
 const HeroSection = styled.section`
-  min-height: 70vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   position: relative;
-  background: ${props => props.theme.mode === 'dark' ? props.theme.colors.background : props.theme.colors.accent};
-  padding: 10rem 0 4rem;
+  background: ${props => props.theme.colors.background};
+  padding: 10rem 0 16rem;
+  margin-bottom: 6rem;
   
   @media (max-width: 1024px) {
     min-height: auto;
     padding: 10rem 0 6rem;
+    margin-bottom: 0;
     flex-direction: column;
   }
 `;
@@ -31,6 +33,14 @@ const HeroBackground = styled.div`
   z-index: 1;
   clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
 
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 30-30 30L0 30z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.3;
+  }
+
   @media (max-width: 1024px) {
     width: 100%;
     height: 60%;
@@ -43,14 +53,14 @@ const HeroBackground = styled.div`
 const HeroContent = styled.div`
   position: relative;
   z-index: 2;
-  max-width: 1400px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 0 4rem;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.2fr;
   align-items: center;
-  gap: 4rem;
+  gap: 2rem;
 
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
@@ -60,19 +70,24 @@ const HeroContent = styled.div`
 `;
 
 const TextBlock = styled.div`
-  color: white;
+  color: ${props => props.theme.mode === 'light' ? props.theme.colors.text : 'white'};
   
   h1 {
-    font-size: clamp(3rem, 6vw, 5rem);
+    font-size: clamp(3rem, 5.5vw, 5rem);
     font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 2rem;
-    letter-spacing: -2px;
+    line-height: 1;
+    margin-bottom: 2.5rem;
+    letter-spacing: -3px;
+    
+    .accent {
+      color: ${props => props.theme.colors.secondary};
+    }
   }
 
   p {
     font-size: 1.4rem;
-    opacity: 0.9;
+    color: ${props => props.theme.mode === 'light' ? props.theme.colors.text : '#ffffff'};
+    opacity: ${props => props.theme.mode === 'light' ? '0.8' : '0.95'};
     max-width: 600px;
     margin-bottom: 3rem;
     line-height: 1.6;
@@ -173,26 +188,44 @@ const ArticleCard = styled.article`
   }
 `;
 
-const Blog = () => {
-  const posts = [
-    { title: 'Weather & Child Vulnerability', meta: 'Aug 2024 • Alert', excerpt: 'Doctors report spike in viral infections among children due to shifting humidity in Bengaluru.', image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop', url: '#' },
-    { title: 'Antibiotic Overuse Warning', meta: 'Apr 2025 • Advice', excerpt: 'Experts urge parents to avoid self-medicating viral infections to prevent antimicrobial resistance.', image: 'https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=800&auto=format&fit=crop', url: '#' },
-    { title: 'Autoimmune Trends in Kids', meta: 'Jan 2025 • Research', excerpt: 'Post-pandemic lifestyle shifts contributing to 20% increase in pediatric autoimmune cases.', image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800&auto=format&fit=crop', url: '#' },
-  ];
+const posts = [
+  {
+    title: 'Weather & Child Vulnerability',
+    meta: 'Aug 2024 • Alert',
+    excerpt: 'Doctors report spike in viral infections among children due to shifting humidity in Bengaluru.',
+    image: 'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=800&auto=format&fit=crop',
+    url: '#'
+  },
+  {
+    title: 'Antibiotic Overuse Warning',
+    meta: 'Apr 2025 • Advice',
+    excerpt: 'Experts urge parents to avoid self-medicating viral infections to prevent antimicrobial resistance.',
+    image: 'https://images.unsplash.com/photo-1584515933487-779824d29309?q=80&w=800&auto=format&fit=crop',
+    url: '#'
+  },
+  {
+    title: 'Autoimmune Trends in Kids',
+    meta: 'Jan 2025 • Research',
+    excerpt: 'Post-pandemic lifestyle shifts contributing to 20% increase in pediatric autoimmune cases.',
+    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800&auto=format&fit=crop',
+    url: '#'
+  },
+];
 
+const Blog = () => {
   return (
     <BlogContainer>
       <HeroSection>
         <HeroBackground />
         <HeroContent>
           <TextBlock>
-            <h1 className="text-gradient">Pediatric <br /> Insights</h1>
+            <h1>Pediatric <br /> <span className="accent">Insights</span></h1>
             <p>
               Expert medical updates, wellness strategies, and parent guides curated for a healthier tomorrow.
             </p>
           </TextBlock>
           <div className="floating" style={{ borderRadius: '40px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.3)', height: '500px' }}>
-            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?q=80&w=1200&auto=format&fit=crop" alt="Pediatric Insights Hero" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img src="/service_14.jpg" alt="Professional Pediatric Insights" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
           </div>
         </HeroContent>
       </HeroSection>

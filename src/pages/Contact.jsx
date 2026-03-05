@@ -7,16 +7,18 @@ const ContactContainer = styled.div`
 `;
 
 const HeroSection = styled.section`
-  min-height: 70vh;
+  min-height: 80vh;
   display: flex;
   align-items: center;
   position: relative;
-  background: ${props => props.theme.mode === 'dark' ? props.theme.colors.background : props.theme.colors.accent};
-  padding: 10rem 0 4rem;
+  background: ${props => props.theme.colors.background};
+  padding: 10rem 0 16rem;
+  margin-bottom: 6rem;
   
   @media (max-width: 1024px) {
     min-height: auto;
     padding: 10rem 0 6rem;
+    margin-bottom: 0;
     flex-direction: column;
   }
 `;
@@ -30,6 +32,14 @@ const HeroBackground = styled.div`
   background: ${props => props.theme.colors.headerGradient};
   z-index: 1;
   clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+  
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 30-30 30L0 30z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.3;
+  }
 
   @media (max-width: 1024px) {
     width: 100%;
@@ -43,14 +53,14 @@ const HeroBackground = styled.div`
 const HeroContent = styled.div`
   position: relative;
   z-index: 2;
-  max-width: 1400px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 0 4rem;
   width: 100%;
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1.2fr;
   align-items: center;
-  gap: 4rem;
+  gap: 2rem;
 
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
@@ -60,19 +70,24 @@ const HeroContent = styled.div`
 `;
 
 const TextBlock = styled.div`
-  color: white;
+  color: ${props => props.theme.mode === 'light' ? props.theme.colors.text : 'white'};
   
   h1 {
-    font-size: clamp(3rem, 6vw, 5rem);
+    font-size: clamp(3rem, 5.5vw, 5rem);
     font-weight: 800;
-    line-height: 1.1;
-    margin-bottom: 2rem;
-    letter-spacing: -2px;
+    line-height: 1;
+    margin-bottom: 2.5rem;
+    letter-spacing: -3px;
+    
+    .accent {
+      color: ${props => props.theme.colors.secondary};
+    }
   }
 
   p {
     font-size: 1.4rem;
-    opacity: 0.9;
+    color: ${props => props.theme.mode === 'light' ? props.theme.colors.text : '#ffffff'};
+    opacity: ${props => props.theme.mode === 'light' ? '0.8' : '0.95'};
     max-width: 600px;
     margin-bottom: 3rem;
     line-height: 1.6;
@@ -248,20 +263,28 @@ const Contact = () => {
         <HeroBackground />
         <HeroContent>
           <TextBlock>
-            <h1 className="text-gradient">Connect <br /> With Us</h1>
+            <h1>Contact <br /> <span className="accent">Our Clinic</span></h1>
             <p>
-              Your child's health journey is our priority. Reach out for consultations, expert queries, or emergency guidance.
+              Your child's health is our priority. Connect with Dr. S.T. Pushpa for expert pediatric care and consultations.
             </p>
           </TextBlock>
-          <div className="floating" style={{ borderRadius: '40px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.3)', height: '500px', background: 'transparent', padding: '1rem' }}>
+          <div className="floating" style={{
+            borderRadius: '40px',
+            overflow: 'hidden',
+            boxShadow: '0 40px 80px rgba(0,0,0,0.25)',
+            height: '450px',
+            background: 'white',
+            padding: '10px',
+            border: '2px solid rgba(255,255,255,0.1)'
+          }}>
             <iframe
-              title="Clinic Map"
+              title="Kidz Clinic Map"
               width="100%"
               height="100%"
-              style={{ border: 0, borderRadius: '30px' }}
+              style={{ border: 0, borderRadius: '30px', filter: 'contrast(1.05)' }}
               loading="lazy"
               allowFullScreen
-              src="https://maps.google.com/maps?q=ASR%20Complex,%20Prakruthi%20Township,%20Horamavu%20Agara%20Main%20Road,%20Bengaluru&t=&z=15&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=Kidz%20Clinic%20ASR%20Complex%20Horamavu%20Bengaluru&t=m&z=17&ie=UTF8&output=embed"
             ></iframe>
           </div>
         </HeroContent>

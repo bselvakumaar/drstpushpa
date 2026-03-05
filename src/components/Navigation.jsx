@@ -6,18 +6,18 @@ import ThemeSwitcher from './ThemeSwitcher';
 import { FaBars, FaTimes, FaWhatsapp } from 'react-icons/fa';
 
 const NavContainer = styled.nav`
-  background: ${props => props.scrolled ? props.theme.colors.navBackground : 'transparent'};
-  backdrop-filter: ${props => props.scrolled ? 'blur(20px)' : 'none'};
-  -webkit-backdrop-filter: ${props => props.scrolled ? 'blur(20px)' : 'none'};
-  box-shadow: ${props => props.scrolled ? '0 10px 30px rgba(0,0,0,0.05)' : 'none'};
+  background: ${props => props.$scrolled ? props.theme.colors.navBackground : (props.theme.mode === 'light' ? 'rgba(255, 255, 255, 0.4)' : 'rgba(15, 23, 42, 0.4)')};
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  box-shadow: ${props => props.$scrolled ? '0 10px 30px rgba(0,0,0,0.05)' : 'none'};
   position: fixed;
   width: 100%;
   top: 0;
   left: 0;
   z-index: 1000;
   transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-  padding: ${props => props.scrolled ? '0.75rem 0' : '1.5rem 0'};
-  border-bottom: 1px solid ${props => props.scrolled ? props.theme.colors.border : 'rgba(255,255,255,0.1)'};
+  padding: ${props => props.$scrolled ? '0.75rem 0' : '1.2rem 0'};
+  border-bottom: 1px solid ${props => props.$scrolled ? props.theme.colors.border : 'rgba(255, 255, 255, 0.1)'};
 `;
 
 const NavContent = styled.div`
@@ -46,7 +46,7 @@ const Brand = styled(Link)`
     font-family: 'Poppins', sans-serif;
     font-size: 1.6rem;
     font-weight: 800;
-    color: ${props => props.scrolled ? props.theme.colors.primary : 'white'};
+    color: ${props => props.$scrolled ? props.theme.colors.primary : (props.theme.mode === 'light' ? props.theme.colors.text : 'white')};
     line-height: 1;
     letter-spacing: -1px;
     transition: color 0.3s ease;
@@ -54,7 +54,7 @@ const Brand = styled(Link)`
   
   .tagline {
     font-size: 0.75rem;
-    color: ${props => props.scrolled ? props.theme.colors.secondary : '#4dd0e1'};
+    color: ${props => props.$scrolled ? props.theme.colors.secondary : (props.theme.mode === 'light' ? props.theme.colors.secondary : '#4dd0e1')};
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
@@ -64,14 +64,14 @@ const Brand = styled(Link)`
   .divider {
     width: 2px;
     height: 35px;
-    background: ${props => props.scrolled ? props.theme.colors.primary : 'rgba(255,255,255,0.3)'};
+    background: ${props => props.$scrolled ? props.theme.colors.primary : 'rgba(255,255,255,0.3)'};
     border-radius: 4px;
     transition: background 0.3s ease;
   }
   
   .subtitle {
     font-size: 1rem;
-    color: ${props => props.scrolled ? '#f59e0b' : '#fbbf24'}; 
+    color: ${props => props.theme.colors.highlight}; 
     font-weight: 800;
     letter-spacing: 1px;
     text-transform: uppercase;
@@ -94,8 +94,8 @@ const DesktopMenu = styled.div`
 `;
 
 const AppointmentCTA = styled.a`
-  background: ${props => props.scrolled ? props.theme.colors.primary : 'white'};
-  color: ${props => props.scrolled ? 'white' : props.theme.colors.primary};
+  background: ${props => props.$scrolled ? props.theme.colors.primary : 'white'};
+  color: ${props => props.$scrolled ? 'white' : props.theme.colors.primary};
   padding: 0.9rem 1.8rem;
   border-radius: 14px;
   text-decoration: none;
@@ -118,16 +118,16 @@ const AppointmentCTA = styled.a`
 
 const NavLink = styled(Link)`
   text-decoration: none;
-  color: ${props => props.scrolled ? props.theme.colors.text : 'white'};
+  color: ${props => props.theme.mode === 'light' ? props.theme.colors.text : 'white'};
   font-weight: 700;
   font-size: 0.95rem;
   transition: all 0.3s;
   position: relative;
-  opacity: 0.85;
+  opacity: 0.8;
   
   &:hover, &.active {
     opacity: 1;
-    color: ${props => props.scrolled ? props.theme.colors.primary : 'white'};
+    color: ${props => props.theme.colors.primary};
   }
   
   &::after {
@@ -137,7 +137,7 @@ const NavLink = styled(Link)`
     left: 0;
     width: 0;
     height: 3px;
-    background: ${props => props.scrolled ? props.theme.colors.primary : 'white'};
+    background: ${props => props.theme.colors.primary};
     transition: width 0.3s ease;
     border-radius: 2px;
   }
@@ -152,7 +152,7 @@ const MobileMenuButton = styled.button`
   background: transparent;
   border: none;
   font-size: 1.8rem;
-  color: ${props => props.scrolled ? props.theme.colors.text : 'white'};
+  color: ${props => props.$scrolled ? props.theme.colors.text : 'white'};
   cursor: pointer;
   
   @media (max-width: 1024px) {
@@ -163,7 +163,7 @@ const MobileMenuButton = styled.button`
 const MobileMenu = styled.div`
   position: fixed;
   top: 0;
-  right: ${props => props.isOpen ? '0' : '-100%'};
+  right: ${props => props.$isOpen ? '0' : '-100%'};
   width: 80%;
   height: 100vh;
   background: ${props => props.theme.colors.background};
@@ -184,7 +184,7 @@ const Overlay = styled.div`
   height: 100vh;
   background: rgba(0,0,0,0.5);
   backdrop-filter: blur(4px);
-  display: ${props => props.isOpen ? 'block' : 'none'};
+  display: ${props => props.$isOpen ? 'block' : 'none'};
   z-index: 1000;
 `;
 
@@ -211,9 +211,9 @@ const Navigation = () => {
 
   return (
     <>
-      <NavContainer scrolled={scrolled}>
+      <NavContainer $scrolled={scrolled}>
         <NavContent>
-          <Brand to="/" scrolled={scrolled}>
+          <Brand to="/" $scrolled={scrolled}>
             <div className="branding">
               <span className="name">Dr. S.T. Pushpa</span>
               <span className="tagline">Pediatrician & Child Specialist</span>
@@ -227,7 +227,7 @@ const Navigation = () => {
               <NavLink
                 key={item.path}
                 to={item.path}
-                scrolled={scrolled}
+                $scrolled={scrolled}
                 className={location.pathname === item.path ? 'active' : ''}
               >
                 {item.label}
@@ -237,20 +237,20 @@ const Navigation = () => {
             <AppointmentCTA
               href="https://wa.me/919566293322"
               target="_blank"
-              scrolled={scrolled}
+              $scrolled={scrolled}
             >
               <FaWhatsapp /> Book Appointment
             </AppointmentCTA>
           </DesktopMenu>
 
-          <MobileMenuButton scrolled={scrolled} onClick={() => setIsMobileMenuOpen(true)}>
+          <MobileMenuButton $scrolled={scrolled} onClick={() => setIsMobileMenuOpen(true)}>
             <FaBars />
           </MobileMenuButton>
         </NavContent>
       </NavContainer>
 
-      <Overlay isOpen={isMobileMenuOpen} onClick={() => setIsMobileMenuOpen(false)} />
-      <MobileMenu isOpen={isMobileMenuOpen}>
+      <Overlay $isOpen={isMobileMenuOpen} onClick={() => setIsMobileMenuOpen(false)} />
+      <MobileMenu $isOpen={isMobileMenuOpen}>
         <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
           <FaTimes size={32} onClick={() => setIsMobileMenuOpen(false)} />
         </div>
@@ -258,7 +258,7 @@ const Navigation = () => {
           <NavLink
             key={item.path}
             to={item.path}
-            scrolled={true}
+            $scrolled={true}
             style={{ fontSize: '1.5rem' }}
             className={location.pathname === item.path ? 'active' : ''}
             onClick={() => setIsMobileMenuOpen(false)}
@@ -269,7 +269,7 @@ const Navigation = () => {
         <AppointmentCTA
           href="https://wa.me/919566293322"
           target="_blank"
-          scrolled={true}
+          $scrolled={true}
           style={{ justifyContent: 'center', marginTop: '1rem' }}
         >
           <FaWhatsapp /> Book Appointment

@@ -14,7 +14,7 @@ const HeroSection = styled.section`
   display: flex;
   align-items: center;
   position: relative;
-  background: ${props => props.theme.mode === 'dark' ? props.theme.colors.background : props.theme.colors.accent};
+  background: ${props => props.theme.colors.background};
   padding: 10rem 0 16rem;
   margin-bottom: 6rem;
   
@@ -35,6 +35,14 @@ const HeroBackground = styled.div`
   background: ${props => props.theme.colors.headerGradient};
   z-index: 1;
   clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M30 0l30 30-30 30L0 30z' fill='%23ffffff' fill-opacity='0.05' fill-rule='evenodd'/%3E%3C/svg%3E");
+    opacity: 0.3;
+  }
 
   @media (max-width: 1024px) {
     width: 100%;
@@ -65,7 +73,7 @@ const HeroContent = styled.div`
 `;
 
 const TextBlock = styled.div`
-  color: white;
+  color: ${props => props.theme.mode === 'light' ? props.theme.colors.text : 'white'};
   padding-right: 2rem;
   
   h1 {
@@ -82,7 +90,8 @@ const TextBlock = styled.div`
 
   p {
     font-size: 1.4rem;
-    opacity: 0.9;
+    color: ${props => props.theme.mode === 'light' ? props.theme.colors.text : '#ffffff'};
+    opacity: ${props => props.theme.mode === 'light' ? '0.8' : '0.95'};
     max-width: 600px;
     margin-bottom: 4rem;
     line-height: 1.6;
@@ -136,7 +145,7 @@ const FloatingStats = styled.div`
   transform: translateX(-50%);
   width: 90%;
   max-width: 1100px;
-  background: ${props => props.theme.mode === 'dark' ? 'rgba(30, 41, 59, 0.85)' : 'rgba(255, 255, 255, 0.95)'};
+  background: ${props => props.theme.colors.cardBackground}ee;
   padding: 3.5rem 2rem;
   border-radius: 30px;
   display: flex;
@@ -294,12 +303,12 @@ const Home = () => {
   const { theme } = useTheme();
   const vaccinationSlides = [
     {
-      image: 'https://images.unsplash.com/photo-1584308666744-24d5c474f2ae?w=800&q=80',
+      image: '/service_4.png',
       title: 'IAP Protocol Vaccination',
       description: 'Following the latest Indian Academy of Pediatrics (IAP) guidelines for comprehensive childhood immunization.'
     },
     {
-      image: 'https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=500&q=80',
+      image: '/service_5.jpg',
       title: 'Safety First Monitoring',
       description: 'Sterile, safe environment with dedicated post-vaccination monitoring for your peace of mind.'
     }
@@ -307,7 +316,7 @@ const Home = () => {
 
   const growthSlides = [
     {
-      image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?q=80&w=800&auto=format&fit=crop',
+      image: '/service_7.jpg',
       title: 'Developmental Screening',
       description: 'Regular assessment of motor, social, and cognitive milestones to ensure on-track development.'
     }
@@ -376,7 +385,7 @@ const Home = () => {
             <img
               src="/assets/hero-pediatric-care.png"
               alt="Pediatric Care Medical Consultation"
-              style={{ width: '100%', maxWidth: '600px', borderRadius: '40px', boxShadow: '0 30px 60px rgba(0,0,0,0.1)' }}
+              style={{ width: '100%', maxWidth: '600px', borderRadius: '40px', boxShadow: '0 30px 60px rgba(0,0,0,0.15)', display: 'block' }}
             />
           </div>
         </WelcomeGrid>

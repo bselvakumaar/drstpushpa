@@ -14,6 +14,9 @@ const GlobalStyles = createGlobalStyle`
     line-height: 1.7;
     color: ${props => props.theme.colors.text};
     background-color: ${props => props.theme.colors.background};
+    background-image: 
+      radial-gradient(at 0% 0%, ${props => props.theme.colors.primary}08 0px, transparent 50%),
+      radial-gradient(at 50% 0%, ${props => props.theme.colors.secondary}05 0px, transparent 50%);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     transition: background-color 0.4s ease, color 0.4s ease;
@@ -219,35 +222,61 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .cta-btn {
-    background: white;
-    color: ${props => props.theme.colors.primary};
-    padding: 1.2rem 2.5rem;
+    background: ${props => props.theme.colors.primary};
+    color: white;
+    padding: 1.2rem 2.8rem;
     border-radius: 100px;
     text-decoration: none;
-    font-weight: 700;
+    font-weight: 800;
     font-size: 1.1rem;
-    transition: all 0.3s;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: inline-flex;
     align-items: center;
     gap: 0.8rem;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
   }
 
   .cta-btn:hover {
-    background: #f8f9fa;
-    transform: translateY(-3px) scale(1.02);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    background: ${props => props.theme.colors.secondary};
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+    color: white;
   }
 
   .cta-btn.secondary {
     background: transparent;
-    color: white;
-    border: 2px solid white;
+    color: ${props => props.theme.mode === 'dark' ? 'white' : props.theme.colors.primary};
+    border: 2px solid ${props => props.theme.mode === 'dark' ? 'rgba(255,255,255,0.4)' : props.theme.colors.primary};
+    box-shadow: none;
   }
 
   .cta-btn.secondary:hover {
-    background: rgba(255,255,255,0.1);
+    background: ${props => props.theme.mode === 'dark' ? 'rgba(255,255,255,0.1)' : props.theme.colors.primary};
+    border-color: ${props => props.theme.colors.primary};
     color: white;
+    transform: translateY(-5px);
+  }
+
+  .text-gradient {
+    background: ${props => props.theme.colors.headerGradient};
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    display: inline-block;
+  }
+
+  /* Custom Scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: ${props => props.theme.colors.background};
+  }
+  ::-webkit-scrollbar-thumb {
+    background: ${props => props.theme.colors.primary}44;
+    border-radius: 5px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: ${props => props.theme.colors.primary}88;
   }
 
   @media (max-width: 768px) {

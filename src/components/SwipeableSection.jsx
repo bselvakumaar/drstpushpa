@@ -51,7 +51,8 @@ const SwipeableContent = styled.div`
   display: flex;
   overflow: hidden;
   border-radius: 16px;
-  background: #f8f9fa;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.05);
 `;
 
 const SwipeSlide = styled.div`
@@ -78,13 +79,13 @@ const SlideImage = styled.img`
 const SlideTitle = styled.h3`
   font-family: 'Poppins', sans-serif;
   font-size: 1.8rem;
-  color: ${props => props.theme.colors.accent};
+  color: #0f172a;
   margin-bottom: 1.5rem;
 `;
 
 const SlideDescription = styled.p`
-  color: ${props => props.theme.colors.text};
-  opacity: 0.7;
+  color: #1e293b;
+  opacity: 0.8;
   line-height: 1.8;
   max-width: 650px;
   margin: 0 auto;

@@ -7,6 +7,7 @@ const AgeGroupsSectionContainer = styled.div`
   border-radius: 20px;
   box-shadow: 0 10px 40px rgba(0,0,0,0.1);
   margin-bottom: 3rem;
+  border: 1px solid rgba(0,0,0,0.05);
 `;
 
 const SectionTitle = styled.h2`
@@ -99,13 +100,13 @@ const AgeCard = styled.div`
 const AgeCardTitle = styled.h3`
   font-family: 'Poppins', sans-serif;
   font-size: 1.5rem;
-  color: ${props => props.theme.colors.accent};
+  color: #0f172a;
   margin-bottom: 1.5rem;
 `;
 
 const AgeCardDescription = styled.p`
-  color: ${props => props.theme.colors.text};
-  opacity: 0.7;
+  color: #1e293b;
+  opacity: 0.85;
   margin-bottom: 2rem;
   line-height: 1.7;
 `;
