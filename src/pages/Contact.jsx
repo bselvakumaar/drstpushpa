@@ -284,7 +284,7 @@ const Contact = () => {
               style={{ border: 0, borderRadius: '30px', filter: 'contrast(1.05)' }}
               loading="lazy"
               allowFullScreen
-              src="https://maps.google.com/maps?q=Kidz%20Clinic%20ASR%20Complex%20Horamavu%20Bengaluru&t=m&z=17&ie=UTF8&output=embed"
+              src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15548.364726451675!2d77.652968!3d13.0298652!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae17f7ec026bf3%3A0x6773285956f5aa32!2sKidz%20Clinic%20(Dr.%20S%20T%20Pushpa)!5e0!3m2!1sen!2sin!4v1772690713114!5m2!1sen!2sin"
             ></iframe>
           </div>
         </HeroContent>
