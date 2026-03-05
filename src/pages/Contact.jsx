@@ -275,7 +275,7 @@ const Contact = () => {
               <div className="icon">📍</div>
               <div className="details">
                 <h4>Clinic Address</h4>
-                <p>Dr. S.T.Pushpa's Kidz Clinic<br />ASR Complex, No.41 & 42, 89/5, Prakruthi Township, 1st Block, Horamavu Agara Main Road, Bangalore, Karnataka 560043.</p>
+                <p>Kidz Clinic<br />ASR Complex, No.41 & 42, 89/5, Prakruthi Township, 1st Block, Horamavu Agara Main Road, Bangalore, Karnataka 560043.</p>
               </div>
             </div>
             <div className="item">

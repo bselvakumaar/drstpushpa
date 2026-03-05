@@ -330,7 +330,7 @@ const Home = () => {
             </div>
           </TextBlock>
           <HeroImageWrapper className="floating">
-            <img src="/Pediatric Care.jpeg" alt="Kidz Hospital Care" />
+            <img src="/Pediatric Care.jpeg" alt="Kidz Clinic Care" />
           </HeroImageWrapper>
         </HeroContent>
         <FloatingStats>

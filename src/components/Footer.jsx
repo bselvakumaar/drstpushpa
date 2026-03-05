@@ -65,7 +65,7 @@ const Footer = () => {
     <FooterContainer>
       <FooterContent>
         <FooterSection>
-          <h3>Dr.S.T.Pushpa</h3>
+          <h3>Dr. S.T. Pushpa</h3>
           <p>MBBS, MD (Paediatrics)</p>
           <p>Expert pediatric care for your child's health and development</p>
         </FooterSection>
@@ -73,7 +73,7 @@ const Footer = () => {
           <h3>Contact Info</h3>
           <p>📞 +91 95662 93322</p>
           <p>📧 drstpushpakidzclinic@gmail.com</p>
-          <p>📍 Dr. S.T.Pushpa's Kidz Clinic</p>
+          <p>📍 Kidz Clinic</p>
           <p style={{ paddingLeft: '1.5rem', marginTop: '-0.5rem' }}>ASR Complex, No.41 & 42, 89/5, Prakruthi Township, 1st Block, Horamavu Agara Main Road, Bangalore, Karnataka 560043.</p>
         </FooterSection>
         <FooterSection>
@@ -86,7 +86,7 @@ const Footer = () => {
         </FooterSection>
       </FooterContent>
       <FooterBottom>
-        <p>&copy; 2025 Dr.S.T.Pushpa's Kidz Clinic. All rights reserved.</p>
+        <p>&copy; 2025 Kidz Clinic. All rights reserved.</p>
       </FooterBottom>
     </FooterContainer>
   );

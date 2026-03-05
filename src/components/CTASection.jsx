@@ -3,17 +3,23 @@ import styled from 'styled-components';
 
 const CTASectionContainer = styled.div`
   background: ${props => props.theme.colors.headerGradient};
-  padding: 6rem 2rem;
+  padding: 6rem 4rem;
   text-align: center;
   border-radius: 40px;
-  margin: 6rem 0;
+  margin: 6rem 2rem;
   color: white;
   box-shadow: 0 30px 60px rgba(0, 129, 255, 0.2);
+  
+  @media (max-width: 768px) {
+    padding: 4rem 2rem;
+    margin: 4rem 1rem;
+    border-radius: 24px;
+  }
 `;
 
 const CTATitle = styled.h2`
   font-family: 'Poppins', sans-serif;
-  font-size: 3rem;
+  font-size: clamp(2rem, 5vw, 3rem);
   color: white;
   margin-bottom: 1.5rem;
 `;
@@ -52,6 +58,7 @@ const CTAButton = styled.a`
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 1rem;
   border: ${props => props.secondary ? '2px solid rgba(255,255,255,0.4)' : 'none'};
   box-shadow: ${props => props.secondary ? 'none' : '0 10px 25px rgba(0,0,0,0.1)'};
@@ -63,6 +70,11 @@ const CTAButton = styled.a`
     box-shadow: 0 15px 35px rgba(0,0,0,0.15);
     border-color: white;
   }
+  
+  @media (max-width: 768px) {
+    width: 100%;
+    padding: 1.25rem 1.5rem;
+  }
 `;
 
 const CTASection = () => {
@@ -70,7 +82,7 @@ const CTASection = () => {
     <CTASectionContainer>
       <CTATitle>Ready to Schedule Your Child's Visit?</CTATitle>
       <CTADescription>
-        Book an appointment with Dr.S.T.Pushpa for expert pediatric care and guidance. We're here to support your child's health journey every step of the way.
+        Book an appointment with Dr. S.T. Pushpa for expert pediatric care and guidance. We're here to support your child's health journey every step of the way.
       </CTADescription>
       <CTAButtons>
         <CTAButton

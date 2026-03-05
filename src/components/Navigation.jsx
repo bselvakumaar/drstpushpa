@@ -71,8 +71,8 @@ const Brand = styled(Link)`
   
   .subtitle {
     font-size: 1rem;
-    color: ${props => props.scrolled ? props.theme.colors.accent : 'rgba(255,255,255,0.9)'};
-    font-weight: 700;
+    color: ${props => props.scrolled ? '#f59e0b' : '#fbbf24'}; 
+    font-weight: 800;
     letter-spacing: 1px;
     text-transform: uppercase;
     transition: color 0.3s ease;
@@ -215,11 +215,11 @@ const Navigation = () => {
         <NavContent>
           <Brand to="/" scrolled={scrolled}>
             <div className="branding">
-              <span className="name">DR. ST PUSHPA</span>
+              <span className="name">Dr. S.T. Pushpa</span>
               <span className="tagline">Pediatrician & Child Specialist</span>
             </div>
             <div className="divider"></div>
-            <span className="subtitle">Kidz Hospital</span>
+            <span className="subtitle">Kidz Clinic</span>
           </Brand>
 
           <DesktopMenu>

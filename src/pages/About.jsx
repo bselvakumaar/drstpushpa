@@ -292,14 +292,14 @@ const About = () => {
         <HeroBackground />
         <HeroContent>
           <TextBlock>
-            <h1>Meet Dr.S.T.Pushpa</h1>
+            <h1>Meet Dr. S.T. Pushpa</h1>
             <p>
               A legacy of compassion and excellence in pediatric care for over 15 years. Dedicated to nurturing the health and futures of little ones.
             </p>
           </TextBlock>
           <ProfileCard className="floating">
-            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80" alt="Dr. ST Pushpa" />
-            <h2>Dr.S.T.Pushpa</h2>
+            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=400&q=80" alt="Dr. S.T. Pushpa" />
+            <h2>Dr. S.T. Pushpa</h2>
             <div className="subtitle">Paediatrician & Child Specialist</div>
           </ProfileCard>
         </HeroContent>

@@ -35,7 +35,7 @@ const Header = () => {
   return (
     <HeaderContainer>
       <HeaderContent>
-        <Title>Dr.S.T.Pushpa</Title>
+        <Title>Dr. S.T. Pushpa</Title>
         <Qualification>Paediatrician & Child Specialist</Qualification>
       </HeaderContent>
     </HeaderContainer>
