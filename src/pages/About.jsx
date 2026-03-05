@@ -170,8 +170,19 @@ const ProfileCard = styled.div`
     color: ${props => props.theme.colors.primary};
     font-weight: 700;
     text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  
+  .title-tag {
+    color: ${props => props.theme.colors.secondary};
+    font-weight: 800;
+    text-transform: uppercase;
     letter-spacing: 1.5px;
-    font-size: 0.85rem;
+    font-size: 0.75rem;
+    margin-top: 0.25rem;
+    opacity: 0.9;
   }
 
   @media (max-width: 1024px) {
@@ -434,20 +445,21 @@ const About = () => {
           <TextBlock>
             <h1>About <br /> <span className="accent">Dr. S.T. Pushpa</span></h1>
             <p>
-              A legacy of compassion and excellence in pediatric care for over 15 years. Dedicated to nurturing the health and futures of little ones.
+              A legacy of compassion and excellence in pediatric care for over 20 years. Dedicated to nurturing the health and futures of little ones.
             </p>
           </TextBlock>
           <ProfileCard className="floating">
             <img src="/assets/baby_logo_8k.svg" alt="Dr. S.T. Pushpa" />
             <h2>Dr. S.T. Pushpa</h2>
-            <div className="subtitle">Paediatrician & Child Specialist</div>
+            <div className="subtitle">MBBS, MD (Paediatrics)</div>
+            <div className="title-tag">Pediatrician &amp; Child Specialist</div>
           </ProfileCard>
         </HeroContent>
       </HeroSection>
 
       <StatsBar>
         <StatItem>
-          <span className="num">15+</span>
+          <span className="num">20+</span>
           <span className="label">Years Experience</span>
         </StatItem>
         <StatItem>

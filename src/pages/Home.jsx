@@ -422,7 +422,7 @@ const Home = () => {
         <FloatingStats>
           <StatItem>
             <div className="icon-wrap">🌟</div>
-            <div className="number">15+</div>
+            <div className="number">20+</div>
             <div className="label">Years of Care</div>
           </StatItem>
           <StatItem>
