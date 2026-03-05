@@ -72,13 +72,13 @@ const GlobalStyles = createGlobalStyle`
   }
 
   .hero-content h1 {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
+    font-size: clamp(2rem, 8vw, 4.5rem);
     margin-bottom: 1.5rem;
     text-shadow: 0 4px 12px rgba(0,0,0,0.1);
   }
 
   .hero-content p {
-    font-size: 1.4rem;
+    font-size: clamp(1rem, 3vw, 1.4rem);
     max-width: 700px;
     margin: 0 auto 3rem;
     opacity: 0.95;
@@ -224,11 +224,11 @@ const GlobalStyles = createGlobalStyle`
   .cta-btn {
     background: ${props => props.theme.colors.primary};
     color: white;
-    padding: 1.2rem 2.8rem;
+    padding: 1rem 2rem;
     border-radius: 100px;
     text-decoration: none;
     font-weight: 800;
-    font-size: 1.1rem;
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
     transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
     display: inline-flex;
     align-items: center;
@@ -285,12 +285,58 @@ const GlobalStyles = createGlobalStyle`
     }
     
     .section-intro h2 {
-      font-size: 2.2rem;
+      font-size: 2rem;
+    }
+
+    .section-intro p {
+      font-size: 1.05rem;
     }
     
     .stat-card {
-      padding: 2rem;
-      min-width: 150px;
+      padding: 1.5rem;
+      min-width: 130px;
+    }
+
+    .hero-stats {
+      gap: 1rem;
+    }
+
+    .cta-section {
+      padding: 4rem 1.5rem;
+      margin: 2rem 0;
+      border-radius: 20px;
+    }
+
+    .cta-section h2 {
+      font-size: 2rem;
+    }
+
+    .age-groups-section {
+      padding: 3rem 0;
+    }
+  }
+
+  @media (max-width: 480px) {
+    .main-content {
+      padding: 3rem 1rem;
+    }
+
+    .section-intro h2 {
+      font-size: 1.75rem;
+    }
+
+    .stat-number {
+      font-size: 2.2rem;
+    }
+
+    .stat-card {
+      padding: 1.25rem;
+      min-width: 110px;
+    }
+
+    .cta-btn {
+      width: 100%;
+      justify-content: center;
     }
   }
 `;

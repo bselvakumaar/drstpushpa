@@ -21,6 +21,14 @@ const HeroSection = styled.section`
     margin-bottom: 0;
     flex-direction: column;
   }
+
+  @media (max-width: 768px) {
+    padding: 8rem 0 3rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 7rem 0 2rem;
+  }
 `;
 
 const HeroBackground = styled.div`
@@ -67,17 +75,21 @@ const HeroContent = styled.div`
     text-align: center;
     padding: 0 2rem;
   }
+
+  @media (max-width: 480px) {
+    padding: 0 1.25rem;
+  }
 `;
 
 const TextBlock = styled.div`
   color: ${props => props.theme.mode === 'light' ? props.theme.colors.text : 'white'};
   
   h1 {
-    font-size: clamp(3rem, 5.5vw, 5rem);
+    font-size: clamp(2.2rem, 6vw, 5rem);
     font-weight: 800;
-    line-height: 1;
-    margin-bottom: 2.5rem;
-    letter-spacing: -3px;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    letter-spacing: -2px;
     
     .accent {
       color: ${props => props.theme.colors.secondary};
@@ -85,7 +97,7 @@ const TextBlock = styled.div`
   }
 
   p {
-    font-size: 1.4rem;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
     color: ${props => props.theme.mode === 'light' ? props.theme.colors.text : '#ffffff'};
     opacity: ${props => props.theme.mode === 'light' ? '0.8' : '0.95'};
     max-width: 600px;
@@ -93,7 +105,14 @@ const TextBlock = styled.div`
     line-height: 1.6;
 
     @media (max-width: 1024px) {
-      margin: 0 auto 3rem;
+      margin: 0 auto 2.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      letter-spacing: -1px;
+      margin-bottom: 1.5rem;
     }
   }
 `;
@@ -107,7 +126,7 @@ const floatAnimation = `
 
 const ProfileCard = styled.div`
   background: ${props => props.theme.colors.cardBackground};
-  padding: 3rem;
+  padding: 2.5rem;
   border-radius: 40px;
   box-shadow: 0 30px 60px rgba(0,0,0,0.25);
   display: flex;
@@ -128,35 +147,46 @@ const ProfileCard = styled.div`
   }
 
   img {
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     border-radius: 50%;
     object-fit: contain;
     background: ${props => props.theme.mode === 'light' ? '#f0f9ff' : '#1e3a5f'};
     padding: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
     border: 4px solid ${props => props.theme.colors.primary};
     box-shadow: 0 8px 24px rgba(0,0,0,0.12);
   }
   
   h2 {
-    font-size: 2.2rem;
+    font-size: clamp(1.5rem, 3.5vw, 2.2rem);
     color: ${props => props.theme.colors.accent};
     margin-bottom: 0.5rem;
-    white-space: nowrap;
+    white-space: normal;
+    word-break: break-word;
   }
   
   .subtitle {
     color: ${props => props.theme.colors.primary};
     font-weight: 700;
     text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: 0.95rem;
+    letter-spacing: 1.5px;
+    font-size: 0.85rem;
   }
 
   @media (max-width: 1024px) {
     max-width: 360px;
     margin: 0 auto;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 1.5rem;
+    max-width: 300px;
+
+    img {
+      width: 140px;
+      height: 140px;
+    }
   }
 `;
 
@@ -164,7 +194,7 @@ const StatsBar = styled.div`
   display: flex;
   justify-content: space-around;
   background: ${props => props.theme.colors.cardBackground};
-  padding: 3rem;
+  padding: 2.5rem 2rem;
   border-radius: 40px;
   box-shadow: 0 20px 50px rgba(0,0,0,0.05);
   margin-top: -60px;
@@ -176,16 +206,28 @@ const StatsBar = styled.div`
   border: 1px solid ${props => props.theme.colors.border};
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    gap: 2rem;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 1.5rem;
     margin-top: 2rem;
+    padding: 2rem 1.5rem;
+    border-radius: 24px;
+  }
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    gap: 1rem;
+    margin: 1.5rem 1rem;
+    padding: 1.5rem;
+    border-radius: 20px;
   }
 `;
 
 const StatItem = styled.div`
   text-align: center;
+  flex: 1;
   .num {
-    font-size: 3rem;
+    font-size: clamp(2rem, 5vw, 3rem);
     font-weight: 800;
     color: ${props => props.theme.colors.primary};
     display: block;
@@ -195,27 +237,54 @@ const StatItem = styled.div`
     text-transform: uppercase;
     letter-spacing: 1px;
     opacity: 0.6;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 480px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid ${props => props.theme.colors.border};
+
+    &:last-child {
+      border-bottom: none;
+      padding-bottom: 0;
+    }
   }
 `;
 
 const GridSection = styled.section`
   max-width: 1400px;
-  margin: 6rem auto;
+  margin: 5rem auto;
   padding: 0 4rem;
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 3rem;
 
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
     padding: 0 2rem;
+    margin: 3rem auto;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 1.5rem;
+    gap: 2rem;
+    margin: 2.5rem auto;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 1rem;
+    gap: 1.5rem;
+    margin: 2rem auto;
   }
 `;
 
 const InfoCard = styled.div`
   background: ${props => props.theme.colors.cardBackground};
-  padding: 4rem;
+  padding: 3rem 2.5rem;
   border-radius: 32px;
   border: 1px solid ${props => props.theme.colors.border};
   transition: all 0.3s ease;
@@ -227,8 +296,8 @@ const InfoCard = styled.div`
   }
 
   h3 {
-    font-size: 2.2rem;
-    margin-bottom: 2.5rem;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    margin-bottom: 2rem;
     color: ${props => props.theme.colors.accent};
     display: flex;
     align-items: center;
@@ -237,9 +306,10 @@ const InfoCard = styled.div`
     &::before {
       content: '';
       width: 6px;
-      height: 30px;
+      height: 28px;
       background: ${props => props.theme.colors.primary};
       border-radius: 3px;
+      flex-shrink: 0;
     }
   }
 
@@ -249,74 +319,100 @@ const InfoCard = styled.div`
   }
 
   li {
-    padding: 1.25rem 0;
+    padding: 1rem 0;
     border-bottom: 1px solid #f1f5f9;
     display: flex;
     align-items: flex-start;
     gap: 1rem;
     color: ${props => props.theme.colors.text};
-    font-size: 1.1rem;
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
     
     &::before {
       content: '✦';
       color: ${props => props.theme.colors.primary};
       font-weight: bold;
+      flex-shrink: 0;
     }
 
     &:last-child {
       border-bottom: none;
     }
   }
+
+  @media (max-width: 768px) {
+    padding: 2.5rem 2rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2rem 1.5rem;
+    border-radius: 24px;
+  }
 `;
 
 const TimelineSection = styled.section`
-  padding: 6rem 4rem;
+  padding: 5rem 4rem;
   background: ${props => props.theme.mode === 'light' ? '#f8fafc' : props.theme.colors.cardBackground};
+
+  @media (max-width: 768px) {
+    padding: 4rem 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 1rem;
+  }
 `;
 
 const TimelineItem = styled.div`
   max-width: 900px;
-  margin: 0 auto 3rem;
+  margin: 0 auto 2.5rem;
   background: ${props => props.theme.colors.cardBackground};
-  padding: 3rem;
+  padding: 2.5rem;
   border-radius: 24px;
   display: flex;
-  gap: 3rem;
+  gap: 2rem;
   align-items: center;
   border: 1px solid ${props => props.theme.colors.border};
   transition: all 0.3s ease;
 
   &:hover {
     border-color: ${props => props.theme.colors.primary};
-    transform: translateX(10px);
+    transform: translateX(6px);
   }
 
   .year {
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 800;
     color: white;
     background: ${props => props.theme.colors.primary};
-    padding: 0.5rem 1.5rem;
+    padding: 0.5rem 1.25rem;
     border-radius: 50px;
     white-space: nowrap;
+    flex-shrink: 0;
   }
 
   .content {
     h4 {
-      font-size: 1.5rem;
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
       margin-bottom: 0.5rem;
       color: ${props => props.theme.colors.accent};
     }
     p {
       opacity: 0.7;
       margin: 0;
+      font-size: clamp(0.9rem, 2vw, 1rem);
     }
   }
 
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: flex-start;
-    gap: 1.5rem;
+    gap: 1rem;
+    padding: 2rem 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 1.5rem 1.25rem;
+    border-radius: 18px;
   }
 `;
 
@@ -383,18 +479,18 @@ const About = () => {
             <li>Neonatal & Newborn Special Care</li>
             <li>Childhood Development and Growth</li>
             <li>IAP Advanced Immunization Services</li>
-            <li>Pediatric Allergy & Asthma Management</li>
+            <li>Pediatric Allergy &amp; Asthma Management</li>
             <li>Pediatric Nutritional Counseling</li>
             <li>Pediatric Sleep Disorders</li>
-            <li>Developmental & Behavioral Disorders</li>
+            <li>Developmental &amp; Behavioral Disorders</li>
             <li>Pediatric Emergency Care</li>
           </ul>
         </InfoCard>
       </GridSection>
 
       <TimelineSection>
-        <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
-          <h2 className="text-gradient" style={{ fontSize: '3.5rem' }}>Professional Journey</h2>
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <h2 className="text-gradient" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}>Professional Journey</h2>
         </div>
         {timelineItems.map((item, index) => (
           <TimelineItem key={index}>

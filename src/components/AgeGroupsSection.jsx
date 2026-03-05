@@ -8,14 +8,24 @@ const AgeGroupsSectionContainer = styled.div`
   box-shadow: 0 10px 40px rgba(0,0,0,0.1);
   margin-bottom: 3rem;
   border: 1px solid rgba(0,0,0,0.05);
+
+  @media (max-width: 768px) {
+    padding: 3rem 1.5rem;
+    border-radius: 16px;
+  }
+
+  @media (max-width: 480px) {
+    padding: 2.5rem 1rem;
+    border-radius: 12px;
+  }
 `;
 
 const SectionTitle = styled.h2`
   font-family: 'Poppins', sans-serif;
-  font-size: 2.5rem;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
   color: ${props => props.theme.colors.accent};
   text-align: center;
-  margin-bottom: 3rem;
+  margin-bottom: 2.5rem;
   position: relative;
   
   &::after {

@@ -21,6 +21,14 @@ const HeroSection = styled.section`
     margin-bottom: 0;
     flex-direction: column;
   }
+
+  @media (max-width: 768px) {
+    padding: 8rem 0 3rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 7rem 0 2rem;
+  }
 `;
 
 const HeroBackground = styled.div`
@@ -67,17 +75,21 @@ const HeroContent = styled.div`
     text-align: center;
     padding: 0 2rem;
   }
+
+  @media (max-width: 480px) {
+    padding: 0 1.25rem;
+  }
 `;
 
 const TextBlock = styled.div`
   color: ${props => props.theme.mode === 'light' ? props.theme.colors.text : 'white'};
   
   h1 {
-    font-size: clamp(3rem, 5.5vw, 5rem);
+    font-size: clamp(2.2rem, 6vw, 5rem);
     font-weight: 800;
-    line-height: 1;
-    margin-bottom: 2.5rem;
-    letter-spacing: -3px;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    letter-spacing: -2px;
     
     .accent {
       color: ${props => props.theme.colors.secondary};
@@ -85,7 +97,7 @@ const TextBlock = styled.div`
   }
 
   p {
-    font-size: 1.4rem;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
     color: ${props => props.theme.mode === 'light' ? props.theme.colors.text : '#ffffff'};
     opacity: ${props => props.theme.mode === 'light' ? '0.8' : '0.95'};
     max-width: 600px;
@@ -93,23 +105,43 @@ const TextBlock = styled.div`
     line-height: 1.6;
 
     @media (max-width: 1024px) {
-      margin: 0 auto 3rem;
+      margin: 0 auto 2.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      letter-spacing: -1px;
+      margin-bottom: 1.5rem;
     }
   }
 `;
 
 const MainGrid = styled.section`
   max-width: 1400px;
-  margin: 6rem auto;
+  margin: 5rem auto;
   padding: 0 4rem;
   display: grid;
   grid-template-columns: 1fr 1.5fr;
-  gap: 5rem;
+  gap: 4rem;
 
   @media (max-width: 1024px) {
     grid-template-columns: 1fr;
     padding: 0 2rem;
-    gap: 4rem;
+    gap: 3rem;
+    margin: 3rem auto;
+  }
+
+  @media (max-width: 768px) {
+    padding: 0 1.5rem;
+    gap: 2rem;
+    margin: 2.5rem auto;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 1rem;
+    gap: 1.5rem;
+    margin: 2rem auto;
   }
 `;
 
@@ -121,73 +153,192 @@ const InfoPanel = styled.div`
 
 const ContactCard = styled.div`
   background: ${props => props.theme.colors.cardBackground};
-  padding: 3rem;
+  padding: 2.5rem;
   border-radius: 32px;
   border: 1px solid ${props => props.theme.colors.border};
   transition: all 0.3s ease;
 
   &:hover {
     border-color: ${props => props.theme.colors.primary};
-    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.05);
   }
 
   h3 {
-    font-size: 1.8rem;
-    margin-bottom: 2rem;
+    font-size: clamp(1.3rem, 3vw, 1.7rem);
+    margin-bottom: 1.75rem;
     color: ${props => props.theme.colors.accent};
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 5px;
+      height: 24px;
+      background: ${props => props.theme.colors.primary};
+      border-radius: 3px;
+      flex-shrink: 0;
+    }
   }
 
-  .item {
+  .contact-section {
+    margin-bottom: 1.75rem;
+    padding-bottom: 1.75rem;
+    border-bottom: 1px solid ${props => props.theme.colors.border};
+
+    &:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+  }
+
+  .section-label {
     display: flex;
-    gap: 1.25rem;
-    margin-bottom: 2rem;
-    
-    .icon {
-      font-size: 1.5rem;
-      color: ${props => props.theme.colors.primary};
-      background: ${props => props.theme.colors.primary}11;
-      width: 50px;
-      height: 50px;
-      border-radius: 12px;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 0.78rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: ${props => props.theme.colors.primary};
+    margin-bottom: 1rem;
+    opacity: 0.9;
+
+    .label-icon {
+      font-size: 0.95rem;
+    }
+  }
+
+  .address-text {
+    font-size: 0.98rem;
+    color: ${props => props.theme.colors.text};
+    line-height: 1.7;
+    opacity: 0.85;
+  }
+
+  .maps-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    margin-top: 0.75rem;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: ${props => props.theme.colors.primary};
+    text-decoration: none;
+    opacity: 0.9;
+    transition: opacity 0.2s;
+
+    &:hover { opacity: 1; }
+  }
+
+  .phone-chips {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .phone-chip {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.65rem 1rem;
+    background: ${props => props.theme.colors.background};
+    border: 1px solid ${props => props.theme.colors.border};
+    border-radius: 14px;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+      border-color: ${props => props.theme.colors.primary};
+      transform: translateX(4px);
+    }
+
+    .chip-icon {
+      font-size: 1rem;
+      flex-shrink: 0;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: ${props => props.theme.colors.primary}15;
       display: flex;
       align-items: center;
       justify-content: center;
+      color: ${props => props.theme.colors.primary};
+    }
+
+    .chip-number {
+      font-size: 1rem;
+      font-weight: 700;
+      color: ${props => props.theme.colors.text};
+    }
+
+    .chip-type {
+      margin-left: auto;
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      color: ${props => props.theme.colors.primary};
+      opacity: 0.8;
+      background: ${props => props.theme.colors.primary}15;
+      padding: 0.2rem 0.5rem;
+      border-radius: 6px;
+    }
+  }
+
+  .email-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.8rem 1.25rem;
+    background: ${props => props.theme.colors.background};
+    border: 1px solid ${props => props.theme.colors.border};
+    border-radius: 14px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    color: ${props => props.theme.colors.text};
+
+    &:hover {
+      border-color: ${props => props.theme.colors.primary};
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+
+    .email-icon {
+      font-size: 1.1rem;
       flex-shrink: 0;
+      color: ${props => props.theme.colors.primary};
     }
 
-    .detail {
-      h4 {
-        font-size: 0.9rem;
-        text-transform: uppercase;
-        letter-spacing: 1px;
-        opacity: 0.6;
-        margin-bottom: 0.25rem;
-      }
-      p, a {
-        font-size: 1.15rem;
-        color: ${props => props.theme.colors.text};
-        text-decoration: none;
-        font-weight: 700;
-        line-height: 1.4;
-      }
+    .email-text {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: ${props => props.theme.colors.text};
     }
+  }
 
-    &:last-child { margin-bottom: 0; }
+  @media (max-width: 480px) {
+    padding: 2rem 1.5rem;
+    border-radius: 24px;
   }
 `;
 
 const FormCard = styled.div`
   background: ${props => props.theme.colors.cardBackground};
-  padding: 5rem;
+  padding: 4rem;
   border-radius: 40px;
   box-shadow: 0 30px 60px rgba(0,0,0,0.05);
   border: 1px solid ${props => props.theme.colors.border};
 
-  @media (max-width: 768px) { padding: 3rem; }
+  @media (max-width: 1024px) { padding: 3rem; }
+  @media (max-width: 768px) { padding: 2.5rem 2rem; border-radius: 28px; }
+  @media (max-width: 480px) { padding: 2rem 1.5rem; border-radius: 24px; }
 
   h2 {
-    font-size: 2.8rem;
-    margin-bottom: 3rem;
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    margin-bottom: 2.5rem;
     color: ${props => props.theme.colors.accent};
   }
 `;
@@ -289,7 +440,7 @@ const Contact = () => {
             borderRadius: '40px',
             overflow: 'hidden',
             boxShadow: '0 40px 80px rgba(0,0,0,0.25)',
-            height: '450px',
+            height: 'clamp(280px, 45vw, 450px)',
             background: 'white',
             padding: '10px',
             border: '2px solid rgba(255,255,255,0.1)'
@@ -311,28 +462,55 @@ const Contact = () => {
         <InfoPanel>
           <ContactCard>
             <h3>Direct Reach</h3>
-            <div className="item">
-              <div className="icon">📍</div>
-              <div className="details">
-                <h4>Clinic Address</h4>
-                <p>Kidz Clinic<br />ASR Complex, No.41 & 42, 89/5, Prakruthi Township, 1st Block, Horamavu Agara Main Road, Bangalore, Karnataka 560043.</p>
+
+            {/* Address */}
+            <div className="contact-section">
+              <div className="section-label"><span className="label-icon">📍</span> Clinic Address</div>
+              <p className="address-text">
+                Kidz Clinic — ASR Complex, No.41 &amp; 42, 89/5,<br />
+                Prakruthi Township, 1st Block,<br />
+                Horamavu Agara Main Road,<br />
+                Bangalore, Karnataka 560043.
+              </p>
+              <a
+                className="maps-link"
+                href="https://maps.google.com/?q=Kidz+Clinic+Dr+S+T+Pushpa"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                🗺 Open in Google Maps →
+              </a>
+            </div>
+
+            {/* Phone Numbers */}
+            <div className="contact-section">
+              <div className="section-label"><span className="label-icon">📞</span> Call / WhatsApp</div>
+              <div className="phone-chips">
+                <a href="tel:+919566293322" className="phone-chip">
+                  <span className="chip-icon">📱</span>
+                  <span className="chip-number">+91 95662 93322</span>
+                  <span className="chip-type">WhatsApp</span>
+                </a>
+                <a href="tel:+919148493322" className="phone-chip">
+                  <span className="chip-icon">📱</span>
+                  <span className="chip-number">+91 91484 93322</span>
+                  <span className="chip-type">Mobile</span>
+                </a>
+                <a href="tel:08025603022" className="phone-chip">
+                  <span className="chip-icon">☎️</span>
+                  <span className="chip-number">080-25603022</span>
+                  <span className="chip-type">Landline</span>
+                </a>
               </div>
             </div>
-            <div className="item">
-              <div className="icon">📞</div>
-              <div className="details">
-                <h4>Call</h4>
-                <p><a href="tel:+919566293322">+91 95662 93322</a></p>
-                <p><a href="tel:+919148493322">+91 91484 93322</a></p>
-                <p><a href="tel:08025603022">080-25603022</a></p>
-              </div>
-            </div>
-            <div className="item">
-              <div className="icon">📧</div>
-              <div className="details">
-                <h4>Email</h4>
-                <p><a href="mailto:admin@drstpushpa.com">admin@drstpushpa.com</a></p>
-              </div>
+
+            {/* Email */}
+            <div className="contact-section">
+              <div className="section-label"><span className="label-icon">✉️</span> Email</div>
+              <a href="mailto:admin@drstpushpa.com" className="email-link">
+                <span className="email-icon">📧</span>
+                <span className="email-text">admin@drstpushpa.com</span>
+              </a>
             </div>
           </ContactCard>
           <ContactCard>

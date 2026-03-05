@@ -28,6 +28,10 @@ const NavContent = styled.div`
   justify-content: space-between;
   align-items: center;
   height: 50px;
+
+  @media (max-width: 480px) {
+    padding: 0 1.25rem;
+  }
 `;
 
 const Brand = styled(Link)`
@@ -80,6 +84,11 @@ const Brand = styled(Link)`
 
   @media (max-width: 768px) {
     .divider, .subtitle, .tagline { display: none; }
+    .name { font-size: 1.3rem; }
+  }
+
+  @media (max-width: 480px) {
+    .name { font-size: 1.15rem; }
   }
 `;
 
@@ -152,8 +161,11 @@ const MobileMenuButton = styled.button`
   background: transparent;
   border: none;
   font-size: 1.8rem;
-  color: ${props => props.$scrolled ? props.theme.colors.text : 'white'};
+  color: ${props => props.$scrolled
+    ? props.theme.colors.text
+    : (props.theme.mode === 'light' ? props.theme.colors.text : 'white')};
   cursor: pointer;
+  padding: 0.25rem;
   
   @media (max-width: 1024px) {
     display: block;
@@ -164,7 +176,7 @@ const MobileMenu = styled.div`
   position: fixed;
   top: 0;
   right: ${props => props.$isOpen ? '0' : '-100%'};
-  width: 80%;
+  width: min(80%, 360px);
   height: 100vh;
   background: ${props => props.theme.colors.background};
   padding: 4rem 2rem;
@@ -174,6 +186,7 @@ const MobileMenu = styled.div`
   transition: right 0.4s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 1001;
   box-shadow: -20px 0 60px rgba(0,0,0,0.1);
+  overflow-y: auto;
 `;
 
 const Overlay = styled.div`
@@ -216,7 +229,7 @@ const Navigation = () => {
           <Brand to="/" $scrolled={scrolled}>
             <div className="branding">
               <span className="name">Dr. S.T. Pushpa</span>
-              <span className="tagline">Pediatrician & Child Specialist</span>
+              <span className="tagline">Pediatrician &amp; Child Specialist</span>
             </div>
             <div className="divider"></div>
             <span className="subtitle">Kidz Clinic</span>

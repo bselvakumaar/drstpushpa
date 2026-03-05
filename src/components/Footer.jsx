@@ -5,7 +5,15 @@ import styled from 'styled-components';
 const FooterContainer = styled.footer`
   background: ${props => props.theme.colors.footerBackground};
   color: ${props => props.theme.colors.footerText};
-  padding: 6rem 0 3rem;
+  padding: 5rem 0 2.5rem;
+
+  @media (max-width: 768px) {
+    padding: 4rem 0 2rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 0 1.5rem;
+  }
 `;
 
 const FooterContent = styled.div`
@@ -13,9 +21,15 @@ const FooterContent = styled.div`
   margin: 0 auto;
   padding: 0 2rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2rem;
   margin-bottom: 2rem;
+
+  @media (max-width: 480px) {
+    padding: 0 1.25rem;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 `;
 
 const FooterSection = styled.div`

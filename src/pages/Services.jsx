@@ -21,6 +21,14 @@ const HeroSection = styled.section`
     margin-bottom: 0;
     flex-direction: column;
   }
+
+  @media (max-width: 768px) {
+    padding: 8rem 0 3rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 7rem 0 2rem;
+  }
 `;
 
 const HeroBackground = styled.div`
@@ -67,17 +75,21 @@ const HeroContent = styled.div`
     text-align: center;
     padding: 0 2rem;
   }
+
+  @media (max-width: 480px) {
+    padding: 0 1.25rem;
+  }
 `;
 
 const TextBlock = styled.div`
   color: ${props => props.theme.mode === 'light' ? props.theme.colors.text : 'white'};
   
   h1 {
-    font-size: clamp(3rem, 5.5vw, 5rem);
+    font-size: clamp(2.2rem, 6vw, 5rem);
     font-weight: 800;
-    line-height: 1;
-    margin-bottom: 2.5rem;
-    letter-spacing: -3px;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    letter-spacing: -2px;
     
     .accent {
       color: ${props => props.theme.colors.secondary};
@@ -85,7 +97,7 @@ const TextBlock = styled.div`
   }
 
   p {
-    font-size: 1.4rem;
+    font-size: clamp(1rem, 2.5vw, 1.4rem);
     color: ${props => props.theme.mode === 'light' ? props.theme.colors.text : '#ffffff'};
     opacity: ${props => props.theme.mode === 'light' ? '0.8' : '0.95'};
     max-width: 600px;
@@ -93,14 +105,21 @@ const TextBlock = styled.div`
     line-height: 1.6;
 
     @media (max-width: 1024px) {
-      margin: 0 auto 3rem;
+      margin: 0 auto 2.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    h1 {
+      letter-spacing: -1px;
+      margin-bottom: 1.5rem;
     }
   }
 `;
 
 const HeroImageWrapper = styled.div`
   position: relative;
-  height: 500px;
+  height: auto;
   border-radius: 40px;
   overflow: hidden;
   box-shadow: 0 30px 60px rgba(0,0,0,0.3);
@@ -109,20 +128,46 @@ const HeroImageWrapper = styled.div`
     width: 100%;
     height: 100%;
     object-fit: cover;
+    max-height: 500px;
+  }
+
+  @media (max-width: 1024px) {
+    max-width: 700px;
+    margin: 0 auto;
+
+    img {
+      max-height: 400px;
+    }
+  }
+
+  @media (max-width: 480px) {
+    border-radius: 24px;
+
+    img {
+      max-height: 280px;
+    }
   }
 `;
 
 const ServicesGrid = styled.section`
   max-width: 1400px;
-  margin: 6rem auto;
+  margin: 5rem auto;
   padding: 0 4rem;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-  gap: 4rem;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 3rem;
 
   @media (max-width: 768px) {
     grid-template-columns: 1fr;
-    padding: 0 2rem;
+    padding: 0 1.5rem;
+    gap: 2rem;
+    margin: 3rem auto;
+  }
+
+  @media (max-width: 480px) {
+    padding: 0 1rem;
+    gap: 1.5rem;
+    margin: 2rem auto;
   }
 `;
 
@@ -250,16 +295,29 @@ const ServiceCard = styled.div`
 `;
 
 const BenefitSection = styled.section`
-  padding: 8rem 4rem;
+  padding: 6rem 4rem;
   background: ${props => props.theme.mode === 'light' ? '#f1f5f9' : props.theme.colors.cardBackground};
+
+  @media (max-width: 768px) {
+    padding: 4rem 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    padding: 3rem 1rem;
+  }
 `;
 
 const BenefitGrid = styled.div`
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 3rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2.5rem;
+
+  @media (max-width: 480px) {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
 `;
 
 const BenefitCard = styled.div`
@@ -425,8 +483,8 @@ const Services = () => {
       </ServicesGrid>
 
       <BenefitSection>
-        <div style={{ textAlign: 'center', marginBottom: '6rem' }}>
-          <h2 className="text-gradient" style={{ fontSize: '3.5rem' }}>The Service Difference</h2>
+        <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+          <h2 className="text-gradient" style={{ fontSize: 'clamp(2rem, 5vw, 3.5rem)' }}>The Service Difference</h2>
         </div>
         <BenefitGrid>
           <BenefitCard>
