@@ -308,6 +308,13 @@ const Contact = () => {
                 <p><a href="tel:+919566293322">+91 95662 93322</a></p>
               </div>
             </div>
+            <div className="item">
+              <div className="icon">📧</div>
+              <div className="details">
+                <h4>Email Inbox</h4>
+                <p><a href="mailto:admin@drstpushpa.com">admin@drstpushpa.com</a></p>
+              </div>
+            </div>
           </ContactCard>
           <ContactCard>
             <h3>Clinical Hours</h3>

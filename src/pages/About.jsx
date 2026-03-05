@@ -295,10 +295,12 @@ const TimelineItem = styled.div`
 
 const About = () => {
   const timelineItems = [
-    { year: 'Since 2010', title: 'Proprietor, Kidz Clinic', text: 'Established Private Practice focusing on holistic child healthcare and preventive medicine.' },
-    { year: '2018-2023', title: 'Pediatrician, WCF Hospitals', text: 'Head of Pediatric Department, managing complex clinical cases and neonatal care.' },
-    { year: '2017-2018', title: 'Consultant, Apollo Hospitals', text: 'Specialized in Newborn ICU (NICU) and Pediatric Emergency management.' },
-    { year: '2014-2017', title: 'Consultant, Specialist Hospital', text: 'Managed pediatric outpatient services and critical care emergencies.' },
+    { year: 'Since 2010', title: 'Proprietor, Kidz Clinic', text: 'Established Independent Practice focusing on comprehensive holistic child healthcare and preventive medicine.' },
+    { year: '2018-2023', title: 'Pediatrician, WCF Hospitals', text: 'Consultant Pediatrician/Head of Pediatrics managing complex clinical cases and neonatal care.' },
+    { year: '2017-2018', title: 'Pediatrician, Apollo Hospitals', text: 'Specialized in Pediatrics New Born ICU (NICU) and Pediatric Intensive Care Unit (PICU).' },
+    { year: '2014-2017', title: 'Pediatrician, Specialist Hospital, Bangalore', text: 'Consultant Pediatrician and Head of Pediatrics department.' },
+    { year: '2014-2017', title: 'Pediatrician, Ovum Hospitals, Bangalore', text: 'Consultant Pediatrician and Head of Pediatrics Emergencies.' },
+    { year: '2010-2014', title: 'Pediatrician, Manipal Hospitals, Bangalore', text: 'Pediatrics Specialist in Pediatric Emergencies, PICU and Neonatal ICU (NICU).' },
   ];
 
   return (
@@ -342,18 +344,23 @@ const About = () => {
             <li>MBBS - VIMS, Bellary</li>
             <li>MD (Paediatrics) - Kathmandu University</li>
             <li>Fellowship in Pediatric Emergency, Manipal Hospital</li>
-            <li>International Pediatric PG Certificate (IPPC), Sydney</li>
-            <li>Pediatric Asthma/Allergy Specialist (AASC), USA</li>
+            <li>IPPC (International Pediatric PG Certificate), Sydney, Australia</li>
+            <li>AASC (Pediatric Asthma/Allergy Specialist), Colorado, USA</li>
+            <li>PGPN (Pediatric Nutrition), Boston, USA</li>
+            <li>DPSM (Pediatric Sleep Medicine)</li>
           </ul>
         </InfoCard>
         <InfoCard>
           <h3>Expertise</h3>
           <ul>
             <li>Neonatal & Newborn Special Care</li>
-            <li>Growth & Developmental Monitoring</li>
+            <li>Childhood Development and Growth</li>
             <li>IAP Advanced Immunization Services</li>
             <li>Pediatric Allergy & Asthma Management</li>
             <li>Pediatric Nutritional Counseling</li>
+            <li>Pediatric Sleep Disorders</li>
+            <li>Developmental & Behavioral Disorders</li>
+            <li>Pediatric Emergency Care</li>
           </ul>
         </InfoCard>
       </GridSection>
@@ -372,6 +379,20 @@ const About = () => {
           </TimelineItem>
         ))}
       </TimelineSection>
+
+      <GridSection style={{ marginTop: '0' }}>
+        <InfoCard style={{ gridColumn: '1 / -1' }}>
+          <h3>Philosophy of Care</h3>
+          <ul style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '0 2rem' }}>
+            <li>Holistic approach to child healthcare</li>
+            <li>Evidence-based medicine with compassion</li>
+            <li>Preventive healthcare and wellness</li>
+            <li>Early detection and intervention</li>
+            <li>Family-centered care approach</li>
+            <li>Continuous education for parents</li>
+          </ul>
+        </InfoCard>
+      </GridSection>
 
       <CTASection />
     </AboutContainer>

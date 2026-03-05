@@ -72,7 +72,7 @@ const Footer = () => {
         <FooterSection>
           <h3>Contact Info</h3>
           <p>📞 +91 95662 93322</p>
-          <p>📧 drstpushpakidzclinic@gmail.com</p>
+          <p>📧 admin@drstpushpa.com</p>
           <p>📍 Kidz Clinic</p>
           <p style={{ paddingLeft: '1.5rem', marginTop: '-0.5rem' }}>ASR Complex, No.41 & 42, 89/5, Prakruthi Township, 1st Block, Horamavu Agara Main Road, Bangalore, Karnataka 560043.</p>
         </FooterSection>
