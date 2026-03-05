@@ -70,7 +70,7 @@ const Brand = styled(Link)`
   }
   
   .subtitle {
-    font-size: 1rem;
+    font-size: 1.3rem;
     color: ${props => props.theme.colors.highlight}; 
     font-weight: 800;
     letter-spacing: 1px;

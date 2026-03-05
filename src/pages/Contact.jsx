@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import CTASection from '../components/CTASection';
 
@@ -247,11 +247,28 @@ const StyledForm = styled.form`
   }
 `;
 
+const WHATSAPP_NUMBER = '919566293322'; // Clinic WhatsApp number
+
 const Contact = () => {
   const [submitted, setSubmitted] = useState(false);
+  const uhidRef = useRef(null);
+  const messageRef = useRef(null);
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    const uhid = uhidRef.current?.value?.trim() || '';
+    const message = messageRef.current?.value?.trim() || '';
+
+    const whatsappText = encodeURIComponent(
+      `Hello Dr. S.T. Pushpa / Kidz Clinic,\n\n` +
+      `*UHID:* ${uhid}\n` +
+      `*Message:* ${message}\n\n` +
+      `(Sent via Clinical Inquiry Form)`
+    );
+
+    const whatsappURL = `https://wa.me/${WHATSAPP_NUMBER}?text=${whatsappText}`;
+    window.open(whatsappURL, '_blank');
+
     setSubmitted(true);
     setTimeout(() => setSubmitted(false), 3000);
     e.target.reset();
@@ -304,14 +321,16 @@ const Contact = () => {
             <div className="item">
               <div className="icon">📞</div>
               <div className="details">
-                <h4>Call Center</h4>
+                <h4>Call</h4>
                 <p><a href="tel:+919566293322">+91 95662 93322</a></p>
+                <p><a href="tel:+919148493322">+91 91484 93322</a></p>
+                <p><a href="tel:08025603022">080-25603022</a></p>
               </div>
             </div>
             <div className="item">
               <div className="icon">📧</div>
               <div className="details">
-                <h4>Email Inbox</h4>
+                <h4>Email</h4>
                 <p><a href="mailto:admin@drstpushpa.com">admin@drstpushpa.com</a></p>
               </div>
             </div>
@@ -334,15 +353,24 @@ const Contact = () => {
           <h2>Clinical Inquiry</h2>
           <StyledForm onSubmit={handleSubmit}>
             <div className="group">
-              <label>Guardian Name</label>
-              <input type="text" placeholder="e.g. Rahul Sharma" required />
+              <label>UHID (Unique Health Identification)</label>
+              <input ref={uhidRef} type="text" placeholder="Provide your Kidz Clinic ID. E.g. KCXXXX1" required />
             </div>
             <div className="group">
               <label>Message</label>
-              <textarea rows="5" placeholder="Briefly describe your concern..." required></textarea>
+              <textarea ref={messageRef} rows="5" placeholder="Briefly describe your concern..." required></textarea>
             </div>
-            <button type="submit">
-              {submitted ? 'Inquiry Sent! ✓' : 'Submit Inquiry'}
+            <button type="submit" style={{
+              background: submitted ? '#128C7E' : 'linear-gradient(135deg, #25D366, #128C7E)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '0.75rem',
+              boxShadow: '0 10px 30px rgba(37, 211, 102, 0.35)'
+            }}>
+              {submitted
+                ? '✓ Opening WhatsApp...'
+                : <><span style={{ fontSize: '1.4rem' }}>💬</span> Submit via WhatsApp</>}
             </button>
           </StyledForm>
         </FormCard>

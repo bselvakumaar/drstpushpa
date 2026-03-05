@@ -98,30 +98,52 @@ const TextBlock = styled.div`
   }
 `;
 
+const floatAnimation = `
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+`;
+
 const ProfileCard = styled.div`
   background: ${props => props.theme.colors.cardBackground};
   padding: 3rem;
   border-radius: 40px;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+  box-shadow: 0 30px 60px rgba(0,0,0,0.25);
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
   border: 1px solid ${props => props.theme.colors.border};
-  
+  position: relative;
+  z-index: 3;
+
+  &.floating {
+    animation: float 4s ease-in-out infinite;
+  }
+
+  @keyframes float {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+  }
+
   img {
     width: 200px;
     height: 200px;
     border-radius: 50%;
-    object-fit: cover;
+    object-fit: contain;
+    background: ${props => props.theme.mode === 'light' ? '#f0f9ff' : '#1e3a5f'};
+    padding: 1rem;
     margin-bottom: 2rem;
     border: 4px solid ${props => props.theme.colors.primary};
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12);
   }
   
   h2 {
-    font-size: 2.5rem;
+    font-size: 2.2rem;
     color: ${props => props.theme.colors.accent};
     margin-bottom: 0.5rem;
+    white-space: nowrap;
   }
   
   .subtitle {
@@ -129,7 +151,12 @@ const ProfileCard = styled.div`
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 2px;
-    font-size: 1rem;
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 1024px) {
+    max-width: 360px;
+    margin: 0 auto;
   }
 `;
 
@@ -299,8 +326,8 @@ const About = () => {
     { year: '2018-2023', title: 'Pediatrician, WCF Hospitals', text: 'Consultant Pediatrician/Head of Pediatrics managing complex clinical cases and neonatal care.' },
     { year: '2017-2018', title: 'Pediatrician, Apollo Hospitals', text: 'Specialized in Pediatrics New Born ICU (NICU) and Pediatric Intensive Care Unit (PICU).' },
     { year: '2014-2017', title: 'Pediatrician, Specialist Hospital, Bangalore', text: 'Consultant Pediatrician and Head of Pediatrics department.' },
-    { year: '2014-2017', title: 'Pediatrician, Ovum Hospitals, Bangalore', text: 'Consultant Pediatrician and Head of Pediatrics Emergencies.' },
-    { year: '2010-2014', title: 'Pediatrician, Manipal Hospitals, Bangalore', text: 'Pediatrics Specialist in Pediatric Emergencies, PICU and Neonatal ICU (NICU).' },
+    { year: '2014-2017', title: 'Pediatrician, Ovum Hospitals, Bangalore', text: 'Consultant Pediatrician.' },
+    { year: '2010-2014', title: 'Pediatrician, Manipal Hospitals, Bangalore', text: 'Pediatrics Specialist in Pediatric Emergencies.' },
   ];
 
   return (
@@ -315,7 +342,7 @@ const About = () => {
             </p>
           </TextBlock>
           <ProfileCard className="floating">
-            <img src="/service_1.jpg" alt="Dr. S.T. Pushpa" />
+            <img src="/assets/baby_logo_8k.svg" alt="Dr. S.T. Pushpa" />
             <h2>Dr. S.T. Pushpa</h2>
             <div className="subtitle">Paediatrician & Child Specialist</div>
           </ProfileCard>

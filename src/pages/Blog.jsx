@@ -225,7 +225,7 @@ const Blog = () => {
             </p>
           </TextBlock>
           <div className="floating" style={{ borderRadius: '40px', overflow: 'hidden', boxShadow: '0 30px 60px rgba(0,0,0,0.3)', height: '500px' }}>
-            <img src="/service_14.jpg" alt="Professional Pediatric Insights" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+            <img src="/blog_hero.png" alt="Dr. S.T. Pushpa - Pediatric Insights" style={{ width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center top' }} />
           </div>
         </HeroContent>
       </HeroSection>
