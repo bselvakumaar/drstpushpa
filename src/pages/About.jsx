@@ -451,7 +451,7 @@ const About = () => {
           <ProfileCard className="floating">
             <img src="/assets/baby_logo_8k.svg" alt="Dr. S.T. Pushpa" />
             <h2>Dr. S.T. Pushpa</h2>
-            <div className="subtitle">MBBS, MD (Paediatrics)</div>
+            <div className="subtitle">MBBS, MD (Pediatrics)</div>
             <div className="title-tag">Pediatrician &amp; Child Specialist</div>
           </ProfileCard>
         </HeroContent>
@@ -477,7 +477,7 @@ const About = () => {
           <h3>Education</h3>
           <ul>
             <li>MBBS - VIMS, Bellary</li>
-            <li>MD (Paediatrics) - Kathmandu University</li>
+            <li>MD (Pediatrics) - Kathmandu University</li>
             <li>Fellowship in Pediatric Emergency, Manipal Hospital</li>
             <li>IPPC (International Pediatric PG Certificate), Sydney, Australia</li>
             <li>AASC (Pediatric Asthma/Allergy Specialist), Colorado, USA</li>

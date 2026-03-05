@@ -36,7 +36,7 @@ const Header = () => {
     <HeaderContainer>
       <HeaderContent>
         <Title>Dr. S.T. Pushpa</Title>
-        <Qualification>MBBS, MD (Paediatrics) | Pediatrician &amp; Child Specialist</Qualification>
+        <Qualification>MBBS, MD (Pediatrics) | Pediatrician &amp; Child Specialist</Qualification>
       </HeaderContent>
     </HeaderContainer>
   );

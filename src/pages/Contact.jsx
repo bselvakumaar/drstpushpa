@@ -1,6 +1,7 @@
 import React, { useState, useRef } from 'react';
 import styled from 'styled-components';
 import CTASection from '../components/CTASection';
+import { FaPhone, FaWhatsapp, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
 
 const ContactContainer = styled.div`
   overflow-x: hidden;
@@ -478,26 +479,26 @@ const Contact = () => {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                🗺 Open in Google Maps →
+                <FaMapMarkerAlt /> Open in Google Maps →
               </a>
             </div>
 
             {/* Phone Numbers */}
             <div className="contact-section">
-              <div className="section-label"><span className="label-icon">📞</span> Call / WhatsApp</div>
+              <div className="section-label"><span className="label-icon"><FaPhone /></span> Call / WhatsApp</div>
               <div className="phone-chips">
                 <a href="tel:+919566293322" className="phone-chip">
-                  <span className="chip-icon">📱</span>
+                  <span className="chip-icon"><FaPhone /></span>
                   <span className="chip-number">+91 95662 93322</span>
                   <span className="chip-type">WhatsApp</span>
                 </a>
                 <a href="tel:+919148493322" className="phone-chip">
-                  <span className="chip-icon">📱</span>
+                  <span className="chip-icon"><FaPhone /></span>
                   <span className="chip-number">+91 91484 93322</span>
                   <span className="chip-type">Mobile</span>
                 </a>
                 <a href="tel:08025603022" className="phone-chip">
-                  <span className="chip-icon">☎️</span>
+                  <span className="chip-icon"><FaPhone /></span>
                   <span className="chip-number">080-25603022</span>
                   <span className="chip-type">Landline</span>
                 </a>
@@ -506,9 +507,9 @@ const Contact = () => {
 
             {/* Email */}
             <div className="contact-section">
-              <div className="section-label"><span className="label-icon">✉️</span> Email</div>
+              <div className="section-label"><span className="label-icon"><FaEnvelope /></span> Email</div>
               <a href="mailto:admin@drstpushpa.com" className="email-link">
-                <span className="email-icon">📧</span>
+                <span className="email-icon"><FaEnvelope /></span>
                 <span className="email-text">admin@drstpushpa.com</span>
               </a>
             </div>

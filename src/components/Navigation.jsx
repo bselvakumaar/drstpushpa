@@ -57,12 +57,26 @@ const Brand = styled(Link)`
   }
   
   .tagline {
-    font-size: 0.75rem;
+    font-size: 0.65rem;
     color: ${props => props.$scrolled ? props.theme.colors.secondary : (props.theme.mode === 'light' ? props.theme.colors.secondary : '#4dd0e1')};
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.5px;
     opacity: 0.9;
+    white-space: nowrap;
+    line-height: 1.2;
+  }
+  
+  .title-tag {
+    font-size: 0.55rem;
+    color: ${props => props.$scrolled ? props.theme.colors.secondary : (props.theme.mode === 'light' ? props.theme.colors.secondary : '#4dd0e1')};
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    opacity: 0.8;
+    white-space: nowrap;
+    line-height: 1;
+    margin-top: 1px;
   }
   
   .divider {
@@ -83,12 +97,18 @@ const Brand = styled(Link)`
   }
 
   @media (max-width: 768px) {
-    .divider, .subtitle, .tagline { display: none; }
-    .name { font-size: 1.3rem; }
+    .divider { display: block; height: 25px; margin: 0 0.5rem; }
+    .subtitle { display: block; font-size: 0.85rem; }
+    .tagline { font-size: 0.55rem; }
+    .title-tag { font-size: 0.45rem; letter-spacing: 0.4px; }
+    .name { font-size: 1rem; }
   }
 
   @media (max-width: 480px) {
-    .name { font-size: 1.15rem; }
+    .name { font-size: 0.95rem; }
+    .subtitle { font-size: 0.75rem; }
+    .divider { height: 20px; margin: 0 0.4rem; }
+    gap: 0.5rem;
   }
 `;
 
@@ -229,8 +249,8 @@ const Navigation = () => {
           <Brand to="/" $scrolled={scrolled}>
             <div className="branding">
               <span className="name">Dr. S.T. Pushpa</span>
-              <span className="tagline">MBBS, MD (Paediatrics)</span>
-              <span className="tagline" style={{ fontSize: '0.65rem', marginTop: '1px' }}>Pediatrician &amp; Child Specialist</span>
+              <span className="tagline">MBBS, MD (Pediatrics)</span>
+              <span className="title-tag">Pediatrician &amp; Child Specialist</span>
             </div>
             <div className="divider"></div>
             <span className="subtitle">Kidz Clinic</span>
