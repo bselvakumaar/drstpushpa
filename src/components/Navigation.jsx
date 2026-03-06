@@ -348,7 +348,6 @@ const Navigation = () => {
           <Brand to="/" $scrolled={scrolled}>
             <div className="branding">
               <span className="name">Dr. S.T. Pushpa</span>
-              <span className="tagline">MBBS, MD (Pediatrics)</span>
               <span className="title-tag">Pediatrician &amp; Child Specialist</span>
             </div>
             <div className="divider"></div>
